@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
+import { absoluteUrl } from "@/lib/utils/site-url";
 import {
   DEFAULT_LOCALE,
   LOCALES,
@@ -55,3 +58,79 @@ export const OPEN_GRAPH_LOCALES: Record<AppLocale, string> = {
 
 /** Default language used in `<link rel="alternate" hreflang="x-default">`. */
 export const DEFAULT_HREFLANG = DEFAULT_LOCALE;
+
+/**
+ * The single social-share image for every public page. An existing local
+ * asset - no external image host is ever introduced.
+ */
+export const SOCIAL_PREVIEW_IMAGE = {
+  path: "/images/hero/hero-desktop.jpg",
+  width: 1920,
+  height: 1080,
+  alt: siteConfig.name,
+} as const;
+
+type PageMetadataInput = {
+  /** Current route locale (`ar` / `en`). */
+  lang: string;
+  /** App-relative path without a locale prefix (`"/"`, `"/menu"`, …). */
+  path: string;
+  /** Plain-text page title; also used as `og:title` and `twitter:title`. */
+  title: string;
+  description: string;
+  /**
+   * Emit the title as-is instead of through the layout's `%s | <site>`
+   * template. Used by the homepage, whose title *is* the site name.
+   */
+  absoluteTitle?: boolean;
+};
+
+/**
+ * Complete metadata for one public indexable page.
+ *
+ * Keeps `title`, `description`, `canonical`, `hreflang`, `openGraph` and
+ * `twitter` in sync - every absolute URL is resolved from `NEXT_PUBLIC_SITE_URL`
+ * via `absoluteUrl`, so localhost can never leak into production metadata.
+ * Private pages (admin) must not use this helper.
+ */
+export function pageMetadata({
+  lang,
+  path,
+  title,
+  description,
+  absoluteTitle,
+}: PageMetadataInput): Metadata {
+  const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
+  const { canonical, languages } = pageAlternates(lang, path);
+  const url = absoluteUrl(canonical);
+  const image = absoluteUrl(SOCIAL_PREVIEW_IMAGE.path);
+
+  return {
+    title: absoluteTitle ? { absolute: title } : title,
+    description,
+    alternates: { canonical, languages },
+    openGraph: {
+      type: "website",
+      siteName: siteConfig.name,
+      title,
+      description,
+      url,
+      locale: OPEN_GRAPH_LOCALES[locale],
+      images: [
+        {
+          url: image,
+          width: SOCIAL_PREVIEW_IMAGE.width,
+          height: SOCIAL_PREVIEW_IMAGE.height,
+          alt: SOCIAL_PREVIEW_IMAGE.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+

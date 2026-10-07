@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { pageAlternates } from "@/i18n/seo";
+import { pageMetadata } from "@/i18n/seo";
 import { Container } from "@/components/ui/container";
 import { Eyebrow, Heading, Text } from "@/components/ui/typography";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -15,11 +15,12 @@ export async function generateMetadata({
   const { lang } = await params;
   const t = await getTranslations({ locale: lang, namespace: "Menu" });
 
-  return {
+  return pageMetadata({
+    lang,
+    path: "/menu",
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: pageAlternates(lang, "/menu"),
-  };
+  });
 }
 
 /**

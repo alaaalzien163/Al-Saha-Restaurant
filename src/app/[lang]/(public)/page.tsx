@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { siteConfig } from "@/config/site";
-import { DEFAULT_LOCALE, isLocale } from "@/i18n/constants";
-import { OPEN_GRAPH_LOCALES, pageAlternates } from "@/i18n/seo";
+import { pageMetadata } from "@/i18n/seo";
 import {
   About,
   Hero,
@@ -19,29 +17,17 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang } = await params;
   const t = await getTranslations({ locale: lang, namespace: "Common" });
-  const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
+  // Official restaurant name for this locale - reused from the existing
+  // `Metadata` catalog instead of duplicating (or inventing) the text.
+  const tSite = await getTranslations({ locale: lang, namespace: "Metadata" });
 
-  return {
-    title: { absolute: siteConfig.name },
+  return pageMetadata({
+    lang,
+    path: "/",
+    title: tSite("title"),
     description: t("siteDescription"),
-    alternates: pageAlternates(lang, "/"),
-    openGraph: {
-      type: "website",
-      siteName: siteConfig.name,
-      title: siteConfig.name,
-      description: t("siteDescription"),
-      url: "/",
-      locale: OPEN_GRAPH_LOCALES[locale],
-      images: [
-        {
-          url: "/images/hero/hero-desktop.jpg",
-          width: 1920,
-          height: 1080,
-          alt: siteConfig.name,
-        },
-      ],
-    },
-  };
+    absoluteTitle: true,
+  });
 }
 
 /**

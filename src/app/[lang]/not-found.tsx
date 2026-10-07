@@ -1,11 +1,18 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 
-export default function NotFound() {
-  const t = useTranslations("Errors");
+/**
+ * Localised 404 for `app/[lang]`.
+ *
+ * Server Component on purpose: the status code, heading, body and home link all
+ * have to be present in the initial HTML, so an unknown URL renders a real 404
+ * document instead of a loading shell. Copy comes from the existing `Errors`
+ * catalog for both locales, and `Link` resolves the locale prefix (and
+ * direction) automatically.
+ */
+export default async function NotFound() {
+  const t = await getTranslations("Errors");
 
   return (
     <main className="flex flex-1 items-center py-[var(--section-gap)]">

@@ -7,10 +7,17 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { siteConfig } from "@/config/site";
 import { directionFor } from "@/i18n/constants";
 import { routing } from "@/i18n/routing";
-import { OPEN_GRAPH_LOCALES } from "@/i18n/seo";
+import { OPEN_GRAPH_LOCALES, SOCIAL_PREVIEW_IMAGE } from "@/i18n/seo";
+import { absoluteUrl, siteUrl } from "@/lib/utils/site-url";
 import "../globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+/**
+ * Canonical origin for `metadataBase`. Resolved from `NEXT_PUBLIC_SITE_URL`
+ * (with a Vercel fallback) so production and preview never emit localhost -
+ * see `src/lib/utils/site-url.ts`.
+ */
+const metadataBase = new URL(siteUrl());
+
 
 /**
  * Resolved once at build time and handed to `NextIntlClientProvider` so it
@@ -36,16 +43,31 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase,
     title: {
       default: t("title"),
       template: t("titleTemplate"),
     },
     description: t("description"),
     applicationName: siteConfig.name,
+    // Shared Open Graph defaults. Public pages replace this whole block with
+    // `pageMetadata()` (which repeats siteName/locale/image so nothing is
+    // lost); pages that define no metadata of their own inherit it.
     openGraph: {
       siteName: siteConfig.name,
       locale: OPEN_GRAPH_LOCALES[locale],
+      images: [
+        {
+          url: absoluteUrl(SOCIAL_PREVIEW_IMAGE.path),
+          width: SOCIAL_PREVIEW_IMAGE.width,
+          height: SOCIAL_PREVIEW_IMAGE.height,
+          alt: SOCIAL_PREVIEW_IMAGE.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [absoluteUrl(SOCIAL_PREVIEW_IMAGE.path)],
     },
     robots: { index: true, follow: true },
   };

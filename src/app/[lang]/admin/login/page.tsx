@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
+import { localePrefixFor } from "@/i18n/constants";
 import { getAdminUser } from "@/lib/auth/session";
 import { safeRedirectPath } from "@/lib/utils/redirect";
 import { Spinner } from "@/components/ui/spinner";
@@ -118,8 +119,10 @@ async function AdminLoginContent({
   searchParams: Promise<{ next?: string }>;
 }) {
   // Already authenticated? Skip the form entirely (verified server-side).
+  // Keep the requested locale, exactly like `signOut` does - `/en/admin/login`
+  // must land on `/en/admin`, never on the default-locale URL.
   const user = await getAdminUser();
-  if (user) redirect("/admin");
+  if (user) redirect(`${localePrefixFor(await getLocale())}/admin`);
 
   const { next } = await searchParams;
 

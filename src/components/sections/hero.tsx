@@ -2,7 +2,6 @@ import { getImageProps } from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/typography";
-import { siteConfig } from "@/config/site";
 
 const MOBILE_IMAGE = "/images/hero/Hero.PNG";
 const DESKTOP_IMAGE = "/images/hero/Hero.PNG";
@@ -58,6 +57,9 @@ function HeroMedia() {
 
 export async function Hero() {
   const t = await getTranslations("Hero");
+  // Official restaurant name for the active locale, reused from the existing
+  // `Metadata` catalog so the text is never duplicated or invented.
+  const tSite = await getTranslations("Metadata");
 
   return (
     <section className="relative isolate flex min-h-[max(34rem,calc(100svh_-_4rem))] items-center overflow-hidden">
@@ -73,7 +75,7 @@ export async function Hero() {
         <div className="max-w-2xl">
           <Eyebrow className="text-accent">{t("eyebrow")}</Eyebrow>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-balance text-white">
-            {siteConfig.name}
+            {tSite("title")}
           </h1>
           <p className="mt-5 max-w-prose text-lg text-pretty text-white/85">
             {t("description")}
