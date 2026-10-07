@@ -60,15 +60,19 @@ export const OPEN_GRAPH_LOCALES: Record<AppLocale, string> = {
 export const DEFAULT_HREFLANG = DEFAULT_LOCALE;
 
 /**
- * The single social-share image for every public page: the restaurant logo,
- * the same asset the Header uses. An existing local asset - no external image
- * host is ever introduced. `width`/`height` are the file's real pixel
- * dimensions (570x438) - never guessed.
+ * The single social-share image for every public page: a dedicated 1200x630
+ * Open Graph card (`public/images/social-preview.png`) built from the same
+ * restaurant logo the Header uses, on the brand palette. An existing local
+ * asset - no external image host is ever introduced. `width`/`height` are the
+ * file's real pixel dimensions - never guessed.
+ *
+ * 1200x630 is the canonical Open Graph / `summary_large_image` ratio, so
+ * WhatsApp, Facebook, Telegram and LinkedIn all render a full-bleed preview.
  */
 export const SOCIAL_PREVIEW_IMAGE = {
-  path: "/images/logo-removebg-preview(1).png",
-  width: 570,
-  height: 438,
+  path: "/images/social-preview.png",
+  width: 1200,
+  height: 630,
   alt: siteConfig.name,
 } as const;
 
