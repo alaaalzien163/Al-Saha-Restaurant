@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/toast";
-import { updateProfile } from "@/app/[lang]/admin/(dashboard)/profile/actions";
+import { updateProfile } from "@/app/[lang]/(site)/admin/(dashboard)/profile/actions";
 import type { ProfileActionResult } from "@/lib/validations/profile";
 import type { Profile } from "@/types/domain";
 

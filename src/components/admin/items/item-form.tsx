@@ -21,7 +21,7 @@ import { useToast } from "@/components/ui/toast";
 import {
   createItem,
   updateItem,
-} from "@/app/[lang]/admin/(dashboard)/items/actions";
+} from "@/app/[lang]/(site)/admin/(dashboard)/items/actions";
 import {
   ALLOWED_IMAGE_ACCEPT,
   formatFileSize,

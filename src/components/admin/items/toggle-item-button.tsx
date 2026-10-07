@@ -4,7 +4,7 @@ import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { toggleItemAvailability } from "@/app/[lang]/admin/(dashboard)/items/actions";
+import { toggleItemAvailability } from "@/app/[lang]/(site)/admin/(dashboard)/items/actions";
 import type { MenuItem } from "@/types/domain";
 
 export type ToggleItemButtonProps = {

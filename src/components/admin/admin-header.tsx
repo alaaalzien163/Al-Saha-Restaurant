@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { signOut } from "@/app/[lang]/admin/login/actions";
+import { signOut } from "@/app/[lang]/(site)/admin/login/actions";
 import { Button } from "@/components/ui/button";
 import { AdminMobileNav } from "./admin-mobile-nav";
 import { LogOutIcon } from "./admin-icons";

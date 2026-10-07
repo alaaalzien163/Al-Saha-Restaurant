@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { PasswordInput } from "@/components/ui/password-input";
 import { useToast } from "@/components/ui/toast";
-import { changePassword } from "@/app/[lang]/admin/(dashboard)/profile/actions";
+import { changePassword } from "@/app/[lang]/(site)/admin/(dashboard)/profile/actions";
 import {
   MIN_PASSWORD_LENGTH,
   type PasswordActionResult,

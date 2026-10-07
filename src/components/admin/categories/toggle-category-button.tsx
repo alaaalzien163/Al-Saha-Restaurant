@@ -4,7 +4,7 @@ import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
-import { toggleCategory } from "@/app/[lang]/admin/(dashboard)/categories/actions";
+import { toggleCategory } from "@/app/[lang]/(site)/admin/(dashboard)/categories/actions";
 import type { Category } from "@/types/domain";
 
 export type ToggleCategoryButtonProps = {

@@ -60,13 +60,15 @@ export const OPEN_GRAPH_LOCALES: Record<AppLocale, string> = {
 export const DEFAULT_HREFLANG = DEFAULT_LOCALE;
 
 /**
- * The single social-share image for every public page. An existing local
- * asset - no external image host is ever introduced.
+ * The single social-share image for every public page: the restaurant logo,
+ * the same asset the Header uses. An existing local asset - no external image
+ * host is ever introduced. `width`/`height` are the file's real pixel
+ * dimensions (570x438) - never guessed.
  */
 export const SOCIAL_PREVIEW_IMAGE = {
-  path: "/images/hero/hero-desktop.jpg",
-  width: 1920,
-  height: 1080,
+  path: "/images/logo-removebg-preview(1).png",
+  width: 570,
+  height: 438,
   alt: siteConfig.name,
 } as const;
 

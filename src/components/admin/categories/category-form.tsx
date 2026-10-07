@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/toast";
 import {
   createCategory,
   updateCategory,
-} from "@/app/[lang]/admin/(dashboard)/categories/actions";
+} from "@/app/[lang]/(site)/admin/(dashboard)/categories/actions";
 import type { CategoryActionResult } from "@/lib/validations/category";
 import type { Category } from "@/types/domain";
 

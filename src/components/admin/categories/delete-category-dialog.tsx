@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/toast";
-import { deleteCategory } from "@/app/[lang]/admin/(dashboard)/categories/actions";
+import { deleteCategory } from "@/app/[lang]/(site)/admin/(dashboard)/categories/actions";
 import type { Category } from "@/types/domain";
 import { TrashIcon } from "../admin-icons";
 
