@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a class on <html> (set by next-themes) rather than by
+   `prefers-color-scheme`, so an explicit Light/Dark/System choice always wins
+   over the operating system setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   Design tokens
+   Raw values live on :root so they can be themed (e.g. dark mode)
+   without touching component code. `@theme` maps them to Tailwind
+   utilities (bg-background, text-foreground, border-border, ...).
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  --background: oklch(0.99 0.004 90);
+  --foreground: oklch(0.22 0.02 60);
+
+  /* Canonical surface names … */
+  --surface: oklch(1 0 0);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(0.96 0.008 90);
+  /* … and the component-level aliases used by the existing utilities. */
+  --card: var(--surface);
+  --card-foreground: var(--surface-foreground);
+  --muted: var(--surface-secondary);
+
+  --muted-foreground: oklch(0.47 0.02 60);
+  --border: oklch(0.9 0.01 80);
+  /* Form control boundary. Kept stronger than --border so input/select/textarea
+     outlines meet WCAG 1.4.11 (3:1 against both the page and card surface). */
+  --input: oklch(0.64 0.015 80);
+  --ring: var(--primary);
+  --primary: oklch(0.56 0.16 35);
+  --primary-foreground: oklch(0.99 0.01 90);
+  --accent: oklch(0.78 0.13 85);
+  --accent-foreground: oklch(0.24 0.03 60);
+  --danger: oklch(0.55 0.2 25);
+  --danger-foreground: oklch(0.99 0.01 90);
+  --destructive: var(--danger);
+  --destructive-foreground: var(--danger-foreground);
+  --success: oklch(0.52 0.14 150);
+  --success-foreground: oklch(0.99 0.01 90);
+  --warning: oklch(0.75 0.15 75);
+  --warning-foreground: oklch(0.24 0.05 70);
+
+  /* Fluid layout rhythm (mobile-first, scales with viewport). */
+  --page-gutter: clamp(1rem, 0.4rem + 3vw, 3rem);
+  --section-gap: clamp(2rem, 1rem + 5vw, 5rem);
+
+  /* Semantic spacing scale (mirrors the 4px-based numeric scale; for
+     documentation and use via arbitrary values where a name is clearer). */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.18 0.015 60);
+  --foreground: oklch(0.95 0.01 90);
+  --surface: oklch(0.22 0.015 60);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(0.26 0.015 60);
+  --muted-foreground: oklch(0.72 0.02 80);
+  --border: oklch(0.32 0.015 60);
+  /* See light-mode note: needs 3:1 against the dark page/card surfaces. */
+  --input: oklch(0.54 0.015 60);
+  --primary: oklch(0.7 0.15 40);
+  --primary-foreground: oklch(0.18 0.02 60);
+  --accent: oklch(0.8 0.13 85);
+  --accent-foreground: oklch(0.2 0.02 60);
+  --danger: oklch(0.65 0.19 25);
+  --danger-foreground: oklch(0.16 0.02 60);
+  --success: oklch(0.75 0.13 150);
+  --success-foreground: oklch(0.16 0.02 60);
+  --warning: oklch(0.8 0.14 80);
+  --warning-foreground: oklch(0.2 0.04 70);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Responsive breakpoints (mobile-first). Defaults kept; `xs` fills the
+     320–480px range. */
+  --breakpoint-xs: 30rem;
+
+  /* Border radius scale. */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Warm, low-contrast shadow scale. */
+  --shadow-2xs: 0 1px 2px 0 oklch(0.2 0.02 60 / 0.05);
+  --shadow-xs: 0 1px 3px 0 oklch(0.2 0.02 60 / 0.08),
+    0 1px 2px -1px oklch(0.2 0.02 60 / 0.06);
+  --shadow-sm: 0 2px 6px -1px oklch(0.2 0.02 60 / 0.1),
+    0 1px 2px -1px oklch(0.2 0.02 60 / 0.06);
+  --shadow-md: 0 6px 16px -4px oklch(0.2 0.02 60 / 0.12),
+    0 2px 6px -2px oklch(0.2 0.02 60 / 0.08);
+  --shadow-lg: 0 12px 32px -8px oklch(0.2 0.02 60 / 0.16),
+    0 4px 12px -4px oklch(0.2 0.02 60 / 0.1);
+  --shadow-xl: 0 24px 48px -12px oklch(0.2 0.02 60 / 0.2),
+    0 8px 20px -8px oklch(0.2 0.02 60 / 0.12);
+
+  /* Fluid typography scale. */
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.84rem + 0.2vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  --text-4xl: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Anchor navigation (`/#about`, `/#contact`) must clear the sticky header. */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    /* `clip` prevents horizontal overflow without creating a scroll container,
+       which would break `position: sticky`. `hidden` is the fallback. */
+    overflow-x: hidden;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

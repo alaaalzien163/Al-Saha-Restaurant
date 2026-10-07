@@ -1,0 +1,358 @@
+{
+  "Metadata": {
+    "title": "مطعم الساحة",
+    "titleTemplate": "%s | مطعم الساحة",
+    "description": "مطعم الساحة — تصفّح أطباقنا الطازجة المعدّة يوميًا، وزُرنا في المطعم."
+  },
+  "Common": {
+    "skipToContent": "تخطَّ إلى المحتوى",
+    "loadingPage": "جارٍ تحميل الصفحة",
+    "siteDescription": "مطعم الساحة — تصفّح أطباقنا الطازجة المعدّة يوميًا، وزُرنا في المطعم.",
+    "closeDialog": "إغلاق النافذة",
+    "dismissNotification": "إخفاء الإشعار",
+    "required": "(مطلوب)",
+    "priceUnavailable": "السعر غير متوفر"
+  },
+  "Navigation": {
+    "primary": "التنقّل الأساسي",
+    "siteNav": "تنقّل الموقع",
+    "openMenu": "فتح قائمة التنقّل",
+    "closeMenu": "إغلاق قائمة التنقّل",
+    "languageSwitcher": "اللغة",
+    "switchTo": "التبديل إلى {language}",
+    "logoAlt": "شعار مطعم الساحة",
+    "logoAdminLink": "دخول لوحة تحكم مطعم الساحة",
+    "home": "الرئيسية",
+    "menu": "القائمة",
+    "about": "من نحن",
+    "contact": "تواصل معنا"
+  },
+  "Theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "تلقائي",
+    "toggle": "سمة {current} — اضغط للتبديل إلى {next}"
+  },
+  "Footer": {
+    "description": "مطعم الساحة — تصفّح أطباقنا الطازجة المعدّة يوميًا، وزُرنا في المطعم.",
+    "followUs": "تابعونا",
+    "explore": "استكشف",
+    "contact": "تواصل معنا",
+    "opensInNewTab": "(يفتح في نافذة جديدة)",
+    "rights": "جميع الحقوق محفوظة.",
+    "note": "نكهات طازجة على مائدة الضيافة."
+  },
+  "Errors": {
+    "title": "حدث خطأ ما",
+    "body": "تعذّر تحميل هذه الصفحة. يُرجى المحاولة مرة أخرى.",
+    "globalBody": "حدث خطأ غير متوقّع. يُرجى المحاولة مرة أخرى.",
+    "retry": "أعد المحاولة",
+    "notFoundTitle": "الصفحة غير موجودة",
+    "notFoundBody": "الصفحة التي تبحث عنها غير موجودة أو تمّ نقلها.",
+    "backToHome": "العودة إلى الرئيسية",
+    "menuTitle": "تعذّر تحميل القائمة",
+    "menuBody": "حدث خطأ أثناء جلب أطباقنا. يُرجى المحاولة مرة أخرى بعد قليل.",
+    "stateDescription": "يرجى المحاولة مرة أخرى. إذا استمرت المشكلة، تواصل مع فريق الدعم."
+  },
+  "Hero": {
+    "eyebrow": "طازج من مطبخنا",
+    "description": "أطباق أصيلة تُحضَّر كل يوم وتُقدَّم في مساحة دافئة ومهَّضة. تصفّح قائمتنا واكتشف طبقك المفضّل الجديد.",
+    "ctaLabel": "تصفّح القائمة"
+  },
+  "About": {
+    "eyebrow": "قصتنا",
+    "title": "مطبخ الحيّ بجذورٍ في الأصالة",
+    "paragraph1": "بدأ مطعم Al-Saha Resto بفكرة بسيطة: أن نطبخ الطعام الذي تربّينا عليه ونقدّمه كما يجب أن يكون — طازجًا وكريمًا ومليئًا بالنكهة.",
+    "paragraph2": "يُحضَّر كل طبق داخل مطبخنا يوميًا، من الصلصات المطبوخة على مهل إلى الخبز المخبوز في المطعم. لا اختصارات، فقط طبخٌ صادق يُشارَك حول المائدة.",
+    "valueFreshTitle": "طازج كل يوم",
+    "valueFreshDescription": "يُحضَّر بكميات صغيرة ولا يُبقَى من يوم إلى آخر.",
+    "valueMadeTitle": "يُحضَّر داخل المطعم",
+    "valueMadeDescription": "صلصات وخبز وحلويات تُصنع من الصفر.",
+    "valueWelcomeTitle": "ترحيبٌ دافئ",
+    "valueWelcomeDescription": "خدمة ودّية للعائلات والأصدقاء.",
+    "imageAlt": "صالة طعام في مطعم Al-Saha Resto تزدان بضوء دافئ"
+  },
+  "Menu": {
+    "eyebrow": "قائمتنا",
+    "title": "طازج يُعدّ كل يوم",
+    "description": "تشكيلة من الأطباق التي تُحضَّر داخل المطعم من مكوّنات عالية الجودة. الأسعار شاملة كل شيء — بلا مفاجآت.",
+    "emptyTitle": "قائمتنا قيد التحضير",
+    "emptyDescription": "الأطباق الطازجة في طريقها إليكم. عُدوا إلينا قريبًا.",
+    "emptyCategoryTitle": "لا توجد أطباق متاحة في هذا القسم.",
+    "emptyCategoryDescription": "يرجى اختيار قسم آخر.",
+    "previewEyebrow": "من مطبخنا",
+    "previewTitle": "أطباق مميّزة",
+    "previewDescription": "ذوقٌ من ما نقدّمه لكم. اطّلع على القائمة كاملة لترى جميع أطباقنا.",
+    "viewFullMenu": "عرض القائمة كاملة",
+    "errorTitle": "تعذّر تحميل القائمة",
+    "errorDescription": "حدث خطأ أثناء جلب أطباقنا. يُرجى المحاولة مجددًا بعد لحظات.",
+    "retry": "أعد المحاولة",
+    "metaTitle": "القائمة",
+    "metaDescription": "تصفّح قائمة مطعم Al-Saha Resto كاملة — أطباق طازجة تُعدّ يوميًا ومرتّبة حسب الأقسام."
+  },
+  "Contact": {
+    "eyebrow": "تواصل",
+    "title": "تواصل معنا",
+    "description": "زُرنا أو اتصل مسبقًا أو أرسل لنا رسالة — يسعدنا أن نسمع منك.",
+    "metaTitle": "تواصل معنا",
+    "metaDescription": "تواصل مع مطعم Al-Saha Resto — العنوان ورقم الهاتف وساعات العمل والاتجاهات.",
+    "fallbackTitle": "بيانات التواصل قريبًا",
+    "fallbackDescription": "نُحدّث بيانات التواصل حاليًا. في هذه الأثناء، تصفّح قائمتنا.",
+    "viewMenu": "تصفّح القائمة",
+    "actionWhatsapp": "راسلنا على واتساب",
+    "actionPhone": "اتصل على {number}",
+    "actionEmail": "راسلنا عبر البريد الإلكتروني",
+    "actionDirections": "احصل على الاتجاهات",
+    "channelVisit": "زُرنا",
+    "channelCall": "اتصل بنا",
+    "channelEmail": "البريد الإلكتروني",
+    "channelHours": "ساعات العمل",
+    "followUs": "تابعونا",
+    "mapTitle": "خريطة تُظهر موقع {name}"
+  },
+  "Accessibility": {
+    "menuCategories": "أقسام القائمة"
+  },
+  "Admin": {
+    "skipToContent": "تخطَّ إلى المحتوى",
+    "loading": "جارٍ التحميل",
+    "actions": {
+      "cancel": "إلغاء",
+      "save": "حفظ التغييرات",
+      "delete": "حذف",
+      "edit": "تعديل"
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "available": "متاح",
+      "unavailable": "غير متاح",
+      "activate": "تفعيل",
+      "deactivate": "إلغاء التفعيل",
+      "markAvailable": "تحديد كمتاح",
+      "markUnavailable": "تحديد كغير متاح"
+    },
+    "table": {
+      "order": "الترتيب",
+      "name": "الاسم",
+      "description": "الوصف",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "item": "الصنف",
+      "category": "التصنيف",
+      "price": "السعر"
+    },
+    "header": {
+      "signOut": "تسجيل الخروج"
+    },
+    "nav": {
+      "label": "لوحة التحكم",
+      "overview": "نظرة عامة",
+      "categories": "التصنيفات",
+      "items": "الأصناف",
+      "profile": "الملف الشخصي"
+    },
+    "mobileNav": {
+      "label": "التنقل في لوحة التحكم",
+      "open": "فتح قائمة التنقّل",
+      "close": "إغلاق قائمة التنقّل"
+    },
+    "sidebar": {
+      "footer": "لوحة تحكم {name}"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "body": "تعذّر تحميل هذه الصفحة. يُرجى المحاولة مرة أخرى.",
+      "retry": "أعد المحاولة"
+    },
+    "overview": {
+      "title": "نظرة عامة",
+      "description": "لمحة سريعة عن مطعمك.",
+      "signedInAs": "تم تسجيل الدخول باسم <b>{email}</b>.",
+      "fallbackEmail": "المسؤول"
+    },
+    "login": {
+      "title": "تسجيل الدخول إلى لوحة التحكم",
+      "description": "مخصّص لفريق العمل المصرّح له فقط.",
+      "backToSite": "العودة إلى الموقع",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "showPassword": "إظهار كلمة المرور",
+      "hidePassword": "إخفاء كلمة المرور",
+      "submit": "تسجيل الدخول"
+    },
+    "categories": {
+      "title": "التصنيفات",
+      "description": "نظّم قائمة طعامك ضمن تصنيفات.",
+      "add": "إضافة تصنيف",
+      "emptyTitle": "لا توجد تصنيفات بعد",
+      "emptyDescription": "أنشئ أول تصنيف لتبدأ في تنظيم القائمة.",
+      "caption": "تصنيفات القائمة",
+      "displayOrder": "الترتيب الظاهر {order}",
+      "form": {
+        "name": "الاسم",
+        "description": "الوصف",
+        "order": "الترتيب الظاهر",
+        "orderHint": "الأرقام الأصغر تظهر أولًا.",
+        "activeLabel": "نشط — ظاهر في القائمة العامة",
+        "create": "إنشاء تصنيف",
+        "createdToast": "تم إنشاء التصنيف",
+        "updatedToast": "تم تحديث التصنيف"
+      },
+      "dialog": {
+        "createTitle": "تصنيف جديد",
+        "createDescription": "أضف تصنيفًا لتنظيم قائمتك.",
+        "editTitle": "تعديل التصنيف"
+      },
+      "delete": {
+        "title": "حذف التصنيف",
+        "confirm": "حذف «{name}»؟ لا يمكن التراجع عن هذا الإجراء.",
+        "note": "قد تتأثر أيضًا الأصناف الموجودة في هذا التصنيف.",
+        "toast": "تم حذف التصنيف"
+      },
+      "toggle": {
+        "activatedToast": "تم تفعيل التصنيف",
+        "deactivatedToast": "تم إلغاء تفعيل التصنيف"
+      }
+    },
+    "items": {
+      "title": "الأصناف",
+      "description": "أدر الأطباق الموجودة في قائمتك.",
+      "add": "إضافة صنف",
+      "emptyTitle": "لا توجد أصناف بعد",
+      "emptyDescription": "أضف أول طبق للبدء.",
+      "emptyFilteredDescription": "لا توجد أصناف في هذا التصنيف بعد.",
+      "noCategoryTitle": "أنشئ تصنيفًا أولًا",
+      "noCategoryDescription": "كل صنف ينتمي إلى تصنيف. أضف تصنيفًا قبل إنشاء أصناف القائمة.",
+      "goToCategories": "الانتقال إلى التصنيفات",
+      "caption": "أصناف القائمة",
+      "uncategorised": "بدون تصنيف",
+      "mobileMeta": "{category} · الترتيب {order}",
+      "form": {
+        "name": "الاسم",
+        "category": "التصنيف",
+        "categoryPlaceholder": "اختر تصنيفًا",
+        "price": "السعر",
+        "order": "الترتيب الظاهر",
+        "orderHint": "الأصغر أولًا.",
+        "description": "الوصف",
+        "availableLabel": "متاح — يظهر في القائمة العامة",
+        "image": "الصورة",
+        "previewAlt": "معاينة الصورة المحددة",
+        "imageAlt": "صورة الصنف",
+        "replaceImage": "استبدال الصورة",
+        "chooseImage": "اختيار صورة",
+        "clearSelection": "إلغاء الاختيار",
+        "imageHint": "JPEG أو PNG أو WebP أو AVIF أو GIF · بحجم يصل إلى {size}.",
+        "create": "إنشاء صنف",
+        "createdToast": "تم إنشاء الصنف",
+        "updatedToast": "تم تحديث الصنف"
+      },
+      "dialog": {
+        "createTitle": "صنف جديد",
+        "createDescription": "أضف طبقًا إلى قائمتك.",
+        "editTitle": "تعديل الصنف"
+      },
+      "delete": {
+        "title": "حذف الصنف",
+        "confirm": "حذف «{name}»؟ لا يمكن التراجع عن هذا الإجراء.",
+        "note": "ستُحذف أيضًا صورة الصنف.",
+        "toast": "تم حذف الصنف"
+      },
+      "toggle": {
+        "availableToast": "تم تحديد الصنف كمتاح",
+        "unavailableToast": "تم تحديد الصنف كغير متاح"
+      },
+      "filter": {
+        "label": "التصفية حسب التصنيف",
+        "all": "الكل"
+      }
+    },
+    "profile": {
+      "title": "الملف الشخصي",
+      "description": "بيانات حساب الإدارة الخاص بك.",
+      "detailsTitle": "البيانات",
+      "detailsDescription": "حدّث اسمك ورقم هاتفك.",
+      "passwordTitle": "تغيير كلمة المرور",
+      "passwordDescription": "يتم التعامل مع تغييرات كلمة المرور بأمان عبر Supabase Auth.",
+      "form": {
+        "fullName": "الاسم الكامل",
+        "phone": "الهاتف",
+        "email": "البريد الإلكتروني",
+        "role": "الدور",
+        "updatedToast": "تم تحديث الملف الشخصي"
+      },
+      "password": {
+        "current": "كلمة المرور الحالية",
+        "new": "كلمة المرور الجديدة",
+        "newHint": "يجب ألا تقل عن {min} أحرف.",
+        "confirm": "تأكيد كلمة المرور الجديدة",
+        "submit": "تحديث كلمة المرور",
+        "updatedToast": "تم تحديث كلمة المرور"
+      }
+    }
+  },
+  "Validation": {
+    "field": {
+      "nameRequired": "الاسم مطلوب.",
+      "nameTooLong": "يجب ألا يتجاوز الاسم {max} حرفًا.",
+      "descriptionTooLong": "يجب ألا يتجاوز الوصف {max} حرفًا.",
+      "displayOrderNotWhole": "يجب أن تكون أولوية العرض رقمًا صحيحًا.",
+      "displayOrderNegative": "لا يمكن أن تكون أولوية العرض سالبة."
+    },
+    "item": {
+      "categoryRequired": "يرجى اختيار فئة.",
+      "priceRequired": "السعر مطلوب.",
+      "priceNotNumber": "يجب أن يكون السعر رقمًا.",
+      "priceNegative": "لا يمكن أن يكون السعر سالبًا."
+    },
+    "auth": {
+      "emailRequired": "البريد الإلكتروني مطلوب.",
+      "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا.",
+      "passwordRequired": "كلمة المرور مطلوبة."
+    },
+    "profile": {
+      "fullNameRequired": "الاسم الكامل مطلوب.",
+      "fullNameTooLong": "يجب ألا يتجاوز الاسم الكامل {max} حرفًا.",
+      "phoneTooLong": "رقم الهاتف طويل جدًا.",
+      "phoneInvalid": "أدخل رقم هاتف صالحًا."
+    },
+    "password": {
+      "currentRequired": "أدخل كلمة المرور الحالية.",
+      "newRequired": "أدخل كلمة مرور جديدة.",
+      "tooShort": "يجب أن تتكون كلمة المرور من {min} أحرف على الأقل.",
+      "sameAsCurrent": "اختر كلمة مرور مختلفة عن كلمة المرور الحالية.",
+      "confirmRequired": "أكّد كلمة المرور الجديدة.",
+      "mismatch": "كلمتا المرور غير متطابقتين."
+    },
+    "image": {
+      "typeInvalid": "اختر صورة بصيغة JPEG أو PNG أو WebP أو AVIF أو GIF.",
+      "empty": "الصورة المحددة فارغة.",
+      "tooLarge": "يجب ألا تتجاوز حجم الصورة 5 ميغابايت."
+    },
+    "actions": {
+      "correctFields": "يرجى تصحيح الحقول المحددة.",
+      "categoryCreateFailed": "تعذّر إنشاء الفئة.",
+      "categoryUpdateFailed": "تعذّر تحديث الفئة.",
+      "categoryStatusFailed": "تعذّر تحديث حالة الفئة.",
+      "categoryDeleteFailed": "تعذّر حذف الفئة.",
+      "categoryIdMissing": "معرّف الفئة مفقود.",
+      "itemCreateFailed": "تعذّر إنشاء الصنف.",
+      "itemUpdateFailed": "تعذّر تحديث الصنف.",
+      "itemLoadFailed": "تعذّر تحميل الصنف.",
+      "itemNotFound": "لم يعد هذا الصنف موجودًا.",
+      "itemAvailabilityFailed": "تعذّر تحديث حالة توفّر الصنف.",
+      "itemDeleteFailed": "تعذّر حذف الصنف.",
+      "itemIdMissing": "معرّف الصنف مفقود.",
+      "imageUploadFailed": "فشل رفع الصورة. يُرجى المحاولة مرة أخرى.",
+      "profileUpdateFailed": "تعذّر تحديث ملفك الشخصي.",
+      "accountNoEmail": "لا يوجد بريد إلكتروني مسجّل لحسابك.",
+      "currentPasswordIncorrect": "كلمة المرور الحالية غير صحيحة.",
+      "incorrectPassword": "كلمة المرور غير صحيحة.",
+      "passwordUpdateFailed": "تعذّر تحديث كلمة المرور. قد لا تستوفي متطلبات الأمان.",
+      "passwordChangeUnavailable": "تغيير كلمة المرور غير متاح مؤقتًا.",
+      "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+      "signInUnavailable": "تسجيل الدخول غير متاح مؤقتًا. يُرجى المحاولة بعد قليل."
+    }
+  }
+}

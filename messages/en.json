@@ -1,0 +1,358 @@
+{
+  "Metadata": {
+    "title": "Al-Saha Resto",
+    "titleTemplate": "%s | Al-Saha Resto",
+    "description": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store."
+  },
+  "Common": {
+    "skipToContent": "Skip to content",
+    "loadingPage": "Loading page",
+    "siteDescription": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store.",
+    "closeDialog": "Close dialog",
+    "dismissNotification": "Dismiss notification",
+    "required": "(required)",
+    "priceUnavailable": "Price unavailable"
+  },
+  "Navigation": {
+    "primary": "Primary",
+    "siteNav": "Site navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "languageSwitcher": "Language",
+    "switchTo": "Switch to {language}",
+    "logoAlt": "Al-Saha Resto logo",
+    "logoAdminLink": "Al-Saha Resto admin login",
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "{current} theme — activate to switch to {next}"
+  },
+  "Footer": {
+    "description": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store.",
+    "followUs": "Follow us",
+    "explore": "Explore",
+    "contact": "Contact",
+    "opensInNewTab": "(opens in a new tab)",
+    "rights": "All rights reserved.",
+    "note": "Fresh flavours, served with a warm welcome."
+  },
+  "Errors": {
+    "title": "Something went wrong",
+    "body": "We couldn't load this page. Please try again.",
+    "globalBody": "An unexpected error occurred. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for doesn't exist or has moved.",
+    "backToHome": "Back to home",
+    "menuTitle": "We couldn’t load the menu",
+    "menuBody": "Something went wrong while fetching our dishes. Please try again in a moment.",
+    "stateDescription": "Please try again. If the problem continues, contact support."
+  },
+  "Hero": {
+    "eyebrow": "Fresh from our kitchen",
+    "description": "Authentic, freshly prepared dishes served in a warm and welcoming space. Explore our menu and find your new favourite.",
+    "ctaLabel": "View the menu"
+  },
+  "About": {
+    "eyebrow": "Our story",
+    "title": "A neighbourhood kitchen rooted in tradition",
+    "paragraph1": "Al-Saha Resto started with a simple idea: cook the food we grew up with and serve it the way it should be — fresh, generous and full of flavour.",
+    "paragraph2": "Every plate is prepared in-house each day, from slow-simmered sauces to bread baked on the premises. No shortcuts, just honest cooking shared around the table.",
+    "valueFreshTitle": "Fresh every day",
+    "valueFreshDescription": "Prepared in small batches, never held over.",
+    "valueMadeTitle": "Made in-house",
+    "valueMadeDescription": "Sauces, breads and desserts from scratch.",
+    "valueWelcomeTitle": "A warm welcome",
+    "valueWelcomeDescription": "Friendly service for families and friends.",
+    "imageAlt": "Warmly lit dining room at Al-Saha Resto glowing with ambient light"
+  },
+  "Menu": {
+    "eyebrow": "Our menu",
+    "title": "Freshly prepared, every day",
+    "description": "A selection of dishes made in-house from quality ingredients. Prices include everything — no surprises.",
+    "emptyTitle": "Our menu is being prepared",
+    "emptyDescription": "Fresh dishes are on their way. Please check back soon.",
+    "emptyCategoryTitle": "No available items in this category.",
+    "emptyCategoryDescription": "Please choose another category.",
+    "previewEyebrow": "From our kitchen",
+    "previewTitle": "Featured dishes",
+    "previewDescription": "A taste of what we're serving. See the full menu for everything.",
+    "viewFullMenu": "View full menu",
+    "errorTitle": "We couldn't load the menu",
+    "errorDescription": "Something went wrong while fetching our dishes. Please try again in a moment.",
+    "retry": "Try again",
+    "metaTitle": "Menu",
+    "metaDescription": "Browse the full Al-Saha Resto menu — freshly prepared dishes, organised by category."
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "description": "Find us, call ahead, or send a message — we'd love to hear from you.",
+    "metaTitle": "Contact",
+    "metaDescription": "Get in touch with Al-Saha Resto — address, phone, opening hours and directions.",
+    "fallbackTitle": "Contact details coming soon",
+    "fallbackDescription": "We're updating our contact information. In the meantime, explore our menu.",
+    "viewMenu": "View the menu",
+    "actionWhatsapp": "Chat on WhatsApp",
+    "actionPhone": "Call {number}",
+    "actionEmail": "Email us",
+    "actionDirections": "Get directions",
+    "channelVisit": "Visit us",
+    "channelCall": "Call us",
+    "channelEmail": "Email",
+    "channelHours": "Opening hours",
+    "followUs": "Follow us",
+    "mapTitle": "Map showing {name}"
+  },
+  "Accessibility": {
+    "menuCategories": "Menu categories"
+  },
+  "Admin": {
+    "skipToContent": "Skip to content",
+    "loading": "Loading",
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "delete": "Delete",
+      "edit": "Edit"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "markAvailable": "Mark available",
+      "markUnavailable": "Mark unavailable"
+    },
+    "table": {
+      "order": "Order",
+      "name": "Name",
+      "description": "Description",
+      "status": "Status",
+      "actions": "Actions",
+      "item": "Item",
+      "category": "Category",
+      "price": "Price"
+    },
+    "header": {
+      "signOut": "Sign out"
+    },
+    "nav": {
+      "label": "Admin",
+      "overview": "Overview",
+      "categories": "Categories",
+      "items": "Items",
+      "profile": "Profile"
+    },
+    "mobileNav": {
+      "label": "Admin navigation",
+      "open": "Open navigation menu",
+      "close": "Close navigation menu"
+    },
+    "sidebar": {
+      "footer": "{name} Admin"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "We couldn't load this page. Please try again.",
+      "retry": "Try again"
+    },
+    "overview": {
+      "title": "Overview",
+      "description": "A snapshot of your restaurant.",
+      "signedInAs": "Signed in as <b>{email}</b>.",
+      "fallbackEmail": "admin"
+    },
+    "login": {
+      "title": "Admin sign in",
+      "description": "Authorized staff only.",
+      "backToSite": "Back to site",
+      "email": "Email",
+      "password": "Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "submit": "Sign in"
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "Organise your menu into categories.",
+      "add": "Add category",
+      "emptyTitle": "No categories yet",
+      "emptyDescription": "Create your first category to start organising the menu.",
+      "caption": "Menu categories",
+      "displayOrder": "Display order {order}",
+      "form": {
+        "name": "Name",
+        "description": "Description",
+        "order": "Display order",
+        "orderHint": "Lower numbers appear first.",
+        "activeLabel": "Active — visible on the public menu",
+        "create": "Create category",
+        "createdToast": "Category created",
+        "updatedToast": "Category updated"
+      },
+      "dialog": {
+        "createTitle": "New category",
+        "createDescription": "Add a category to organise your menu.",
+        "editTitle": "Edit category"
+      },
+      "delete": {
+        "title": "Delete category",
+        "confirm": "Delete “{name}”? This cannot be undone.",
+        "note": "Any items in this category may also be affected.",
+        "toast": "Category deleted"
+      },
+      "toggle": {
+        "activatedToast": "Category activated",
+        "deactivatedToast": "Category deactivated"
+      }
+    },
+    "items": {
+      "title": "Items",
+      "description": "Manage the dishes on your menu.",
+      "add": "Add item",
+      "emptyTitle": "No items yet",
+      "emptyDescription": "Add your first dish to get started.",
+      "emptyFilteredDescription": "There are no items in this category yet.",
+      "noCategoryTitle": "Create a category first",
+      "noCategoryDescription": "Every item belongs to a category. Add a category before creating menu items.",
+      "goToCategories": "Go to categories",
+      "caption": "Menu items",
+      "uncategorised": "Uncategorised",
+      "mobileMeta": "{category} · order {order}",
+      "form": {
+        "name": "Name",
+        "category": "Category",
+        "categoryPlaceholder": "Select a category",
+        "price": "Price",
+        "order": "Display order",
+        "orderHint": "Lower first.",
+        "description": "Description",
+        "availableLabel": "Available — shown on the public menu",
+        "image": "Image",
+        "previewAlt": "Selected image preview",
+        "imageAlt": "Item image",
+        "replaceImage": "Replace image",
+        "chooseImage": "Choose image",
+        "clearSelection": "Clear selection",
+        "imageHint": "JPEG, PNG, WebP, AVIF or GIF · up to {size}.",
+        "create": "Create item",
+        "createdToast": "Item created",
+        "updatedToast": "Item updated"
+      },
+      "dialog": {
+        "createTitle": "New item",
+        "createDescription": "Add a dish to your menu.",
+        "editTitle": "Edit item"
+      },
+      "delete": {
+        "title": "Delete item",
+        "confirm": "Delete “{name}”? This cannot be undone.",
+        "note": "The item’s image will also be removed.",
+        "toast": "Item deleted"
+      },
+      "toggle": {
+        "availableToast": "Item marked available",
+        "unavailableToast": "Item marked unavailable"
+      },
+      "filter": {
+        "label": "Filter by category",
+        "all": "All"
+      }
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Your admin account details.",
+      "detailsTitle": "Details",
+      "detailsDescription": "Update your name and phone number.",
+      "passwordTitle": "Change password",
+      "passwordDescription": "Password changes are handled securely by Supabase Auth.",
+      "form": {
+        "fullName": "Full name",
+        "phone": "Phone",
+        "email": "Email",
+        "role": "Role",
+        "updatedToast": "Profile updated"
+      },
+      "password": {
+        "current": "Current password",
+        "new": "New password",
+        "newHint": "At least {min} characters.",
+        "confirm": "Confirm new password",
+        "submit": "Update password",
+        "updatedToast": "Password updated"
+      }
+    }
+  },
+  "Validation": {
+    "field": {
+      "nameRequired": "Name is required.",
+      "nameTooLong": "Name must be {max} characters or fewer.",
+      "descriptionTooLong": "Description must be {max} characters or fewer.",
+      "displayOrderNotWhole": "Display order must be a whole number.",
+      "displayOrderNegative": "Display order cannot be negative."
+    },
+    "item": {
+      "categoryRequired": "Please choose a category.",
+      "priceRequired": "Price is required.",
+      "priceNotNumber": "Price must be a number.",
+      "priceNegative": "Price cannot be negative."
+    },
+    "auth": {
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Enter a valid email address.",
+      "passwordRequired": "Password is required."
+    },
+    "profile": {
+      "fullNameRequired": "Full name is required.",
+      "fullNameTooLong": "Full name must be {max} characters or fewer.",
+      "phoneTooLong": "Phone number is too long.",
+      "phoneInvalid": "Enter a valid phone number."
+    },
+    "password": {
+      "currentRequired": "Enter your current password.",
+      "newRequired": "Enter a new password.",
+      "tooShort": "Password must be at least {min} characters.",
+      "sameAsCurrent": "Choose a password different from your current one.",
+      "confirmRequired": "Confirm your new password.",
+      "mismatch": "Passwords do not match."
+    },
+    "image": {
+      "typeInvalid": "Choose a JPEG, PNG, WebP, AVIF or GIF image.",
+      "empty": "The selected image is empty.",
+      "tooLarge": "Image must be 5 MB or smaller."
+    },
+    "actions": {
+      "correctFields": "Please correct the highlighted fields.",
+      "categoryCreateFailed": "Could not create the category.",
+      "categoryUpdateFailed": "Could not update the category.",
+      "categoryStatusFailed": "Could not update the category status.",
+      "categoryDeleteFailed": "Could not delete the category.",
+      "categoryIdMissing": "Missing category id.",
+      "itemCreateFailed": "Could not create the item.",
+      "itemUpdateFailed": "Could not update the item.",
+      "itemLoadFailed": "Could not load the item.",
+      "itemNotFound": "This item no longer exists.",
+      "itemAvailabilityFailed": "Could not update the item availability.",
+      "itemDeleteFailed": "Could not delete the item.",
+      "itemIdMissing": "Missing item id.",
+      "imageUploadFailed": "Image upload failed. Please try again.",
+      "profileUpdateFailed": "Could not update your profile.",
+      "accountNoEmail": "Your account has no email on file.",
+      "currentPasswordIncorrect": "Your current password is incorrect.",
+      "incorrectPassword": "Incorrect password.",
+      "passwordUpdateFailed": "Could not update your password. It may not meet the security requirements.",
+      "passwordChangeUnavailable": "Password change is temporarily unavailable.",
+      "invalidCredentials": "Invalid email or password.",
+      "signInUnavailable": "Sign-in is temporarily unavailable. Please try again in a moment."
+    }
+  }
+}
