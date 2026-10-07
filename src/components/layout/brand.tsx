@@ -15,6 +15,12 @@ export type BrandProps = {
   logoAlt?: string;
   /** Translated accessible name for the link (overrides the visible text). */
   label?: string;
+  /**
+   * Render the visible restaurant name next to the logo/monogram. The public
+   * navbar hides it so the logo alone acts as the admin-login entry point;
+   * the footer keeps the full lockup.
+   */
+  showWordmark?: boolean;
 };
 
 /** Logo + wordmark. Presentational, so it stays usable in server and client trees. */
@@ -25,6 +31,7 @@ export function Brand({
   showLogo = false,
   logoAlt,
   label,
+  showWordmark = true,
 }: BrandProps) {
   return (
     <Link
@@ -54,9 +61,11 @@ export function Brand({
           {siteConfig.monogram}
         </span>
       )}
-      <span className="text-base font-semibold tracking-tight sm:text-lg">
-        {siteConfig.name}
-      </span>
+      {showWordmark ? (
+        <span className="text-base font-semibold tracking-tight sm:text-lg">
+          {siteConfig.name}
+        </span>
+      ) : null}
     </Link>
   );
 }

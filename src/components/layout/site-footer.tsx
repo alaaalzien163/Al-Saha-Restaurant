@@ -1,7 +1,12 @@
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { siteConfig, siteContact } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
-import { hasAnyContact, mailtoHref, telHref } from "@/lib/utils/contact";
+import {
+  addressLines,
+  hasAnyContact,
+  mailtoHref,
+  telHref,
+} from "@/lib/utils/contact";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import {
@@ -10,7 +15,6 @@ import {
   PhoneIcon,
   SocialIcon,
 } from "@/components/contact/contact-icons";
-import { Brand } from "./brand";
 
 /**
  * Public site footer.
@@ -19,10 +23,14 @@ import { Brand } from "./brand";
  * driven by `siteContact` and simply omitted when not configured, so the footer
  * stays balanced on every screen size.
  */
-export function SiteFooter() {
-  const t = useTranslations("Footer");
-  const tNav = useTranslations("Navigation");
-  const { address, phone, email, socials } = siteContact;
+export async function SiteFooter() {
+  const t = await getTranslations("Footer");
+  const tNav = await getTranslations("Navigation");
+  const tSocial = await getTranslations("Social");
+  const locale = await getLocale();
+  const { address, phoneNumbers, email, socials } = siteContact;
+  const phones = phoneNumbers ?? [];
+  const addressLinesList = addressLines(address, locale);
   const hasContact = hasAnyContact(siteContact);
   const hasSocials = Boolean(socials && socials.length > 0);
 
@@ -36,10 +44,10 @@ export function SiteFooter() {
           )}
         >
           <div className="space-y-4">
-            <Brand />
+            {/* <Brand />
             <p className="max-w-xs text-sm text-pretty text-muted-foreground">
               {t("description")}
-            </p>
+            </p> */}
 
             {hasSocials ? (
               <div>
@@ -59,7 +67,7 @@ export function SiteFooter() {
                           platform={social.platform}
                           className="size-4"
                         />
-                        {social.label}
+                        {tSocial(social.platform)}
                         <span className="sr-only">
                           {" "}
                           {t("opensInNewTab")}
@@ -99,24 +107,32 @@ export function SiteFooter() {
                 {t("contact")}
               </h2>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {address && address.lines.length > 0 ? (
+                {address && addressLinesList.length > 0 ? (
                   <li className="flex gap-2">
                     <MapPinIcon className="mt-0.5 size-4 shrink-0" />
-                    <address className="not-italic">
-                      {address.lines.join(", ")}
+                    <address className="not-italic" dir="auto">
+                      {addressLinesList.join(", ")}
                     </address>
                   </li>
                 ) : null}
 
-                {phone ? (
+                {phones.length > 0 ? (
                   <li className="flex gap-2">
                     <PhoneIcon className="mt-0.5 size-4 shrink-0" />
-                    <a
-                      href={telHref(phone.number)}
-                      className="transition-colors hover:text-foreground"
-                    >
-                      {phone.display}
-                    </a>
+                    <span className="flex flex-col gap-1">
+                      {phones.map((entry) => (
+                        <a
+                          key={entry.number}
+                          href={telHref(entry.number)}
+                          aria-label={t("phoneLabel", {
+                            number: entry.display,
+                          })}
+                          className="tabular-nums transition-colors hover:text-foreground"
+                        >
+                          {entry.display}
+                        </a>
+                      ))}
+                    </span>
                   </li>
                 ) : null}
 

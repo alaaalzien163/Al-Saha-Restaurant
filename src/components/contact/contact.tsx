@@ -1,11 +1,17 @@
 import type { ReactNode } from "react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { siteContact } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Eyebrow, Heading, Text } from "@/components/ui/typography";
-import { hasAnyContact, mailtoHref, telHref, whatsappHref } from "@/lib/utils/contact";
+import {
+  addressLines,
+  hasAnyContact,
+  mailtoHref,
+  telHref,
+  whatsappHref,
+} from "@/lib/utils/contact";
 import { ContactChannel } from "./contact-channel";
 import { ContactMap } from "./contact-map";
 import {
@@ -55,7 +61,12 @@ export async function Contact({
   description,
 }: ContactProps = {}) {
   const t = await getTranslations("Contact");
-  const { address, phone, whatsapp, email, hours, socials } = siteContact;
+  const tSocial = await getTranslations("Social");
+  const locale = await getLocale();
+  const { address, phoneNumbers, whatsapp, email, hours, socials } =
+    siteContact;
+  const phones = phoneNumbers ?? [];
+  const addressLinesList = addressLines(address, locale);
 
   const heading = title ? (
     <header className="mb-8 max-w-prose">
@@ -110,11 +121,11 @@ export async function Contact({
       icon: <WhatsAppIcon className="size-5" />,
     });
   }
-  if (phone) {
+  for (const entry of phones) {
     actions.push({
-      key: "phone",
-      label: t("actionPhone", { number: phone.display }),
-      href: telHref(phone.number),
+      key: `phone-${entry.number}`,
+      label: t("actionPhone", { number: entry.display }),
+      href: telHref(entry.number),
       external: false,
       icon: <PhoneIcon className="size-5" />,
     });
@@ -146,13 +157,13 @@ export async function Contact({
       <div className={cn("grid gap-10", hasMap && "lg:grid-cols-2 lg:gap-16")}>
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2">
-            {address && address.lines.length > 0 ? (
+            {address && addressLinesList.length > 0 ? (
               <ContactChannel
                 icon={<MapPinIcon className="size-4" />}
-                label={t("channelVisit")}
+                label={t("channelAddress")}
               >
-                <address className="not-italic">
-                  {address.lines.map((line) => (
+                <address className="not-italic" dir="auto">
+                  {addressLinesList.map((line) => (
                     <span key={line} className="block">
                       {line}
                     </span>
@@ -172,17 +183,26 @@ export async function Contact({
               </ContactChannel>
             ) : null}
 
-            {phone ? (
+            {phones.length > 0 ? (
               <ContactChannel
                 icon={<PhoneIcon className="size-4" />}
-                label={t("channelCall")}
+                label={t("channelPhone")}
               >
-                <a
-                  href={telHref(phone.number)}
-                  className="font-medium text-primary hover:underline"
-                >
-                  {phone.display}
-                </a>
+                <ul className="space-y-1">
+                  {phones.map((entry) => (
+                    <li key={entry.number}>
+                      <a
+                        href={telHref(entry.number)}
+                        aria-label={t("actionPhone", {
+                          number: entry.display,
+                        })}
+                        className="font-medium tabular-nums text-primary hover:underline"
+                      >
+                        {entry.display}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </ContactChannel>
             ) : null}
 
@@ -248,18 +268,22 @@ export async function Contact({
               <ul className="mt-3 flex flex-wrap gap-2">
                 {socials.map((social) => (
                   <li key={social.href}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                    >
-                      <SocialIcon
-                        platform={social.platform}
-                        className="size-4"
-                      />
-                      {social.label}
-                    </a>
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                      >
+                        <SocialIcon
+                          platform={social.platform}
+                          className="size-4"
+                        />
+                        {tSocial(social.platform)}
+                        <span className="sr-only">
+                          {" "}
+                          {t("opensInNewTab")}
+                        </span>
+                      </a>
                   </li>
                 ))}
               </ul>

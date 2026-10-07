@@ -4,11 +4,11 @@
  * Kept separate from `routing.ts` so `src/proxy.ts` can read the locale list
  * without pulling `next-intl` into the proxy bundle.
  */
-export const LOCALES = ["en", "ar"] as const;
+export const LOCALES = ["ar", "en"] as const;
 
 export type AppLocale = (typeof LOCALES)[number];
 
-export const DEFAULT_LOCALE: AppLocale = "en";
+export const DEFAULT_LOCALE: AppLocale = "ar";
 
 /** Locales that read right-to-left. Extend when adding an RTL language. */
 const RTL_LOCALES: readonly string[] = ["ar"];

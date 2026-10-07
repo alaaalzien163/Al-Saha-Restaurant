@@ -13,8 +13,7 @@ export type MenuItemCardProps = {
   sizes?: string;
 };
 
-const DEFAULT_SIZES =
-  "(min-width: 1280px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw";
+const DEFAULT_SIZES = "(min-width: 640px) 33vw, 50vw";
 
 function ImagePlaceholder() {
   return (
@@ -50,7 +49,7 @@ export function MenuItemCard({
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm">
-      <div className="relative aspect-[3/2] bg-muted sm:aspect-[4/3]">
+      <div className="relative aspect-[16/9] bg-muted sm:aspect-[3/2]">
         {item.image_url ? (
           <Image
             src={item.image_url}
@@ -64,20 +63,20 @@ export function MenuItemCard({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-1 p-2.5 sm:gap-1.5 sm:p-4">
-        <h3 className="line-clamp-2 text-sm leading-snug font-medium text-foreground text-pretty sm:text-base">
+      <div className="flex flex-1 flex-col gap-0.5 p-2 sm:gap-1 sm:p-3">
+        <h3 className="line-clamp-2 text-sm leading-snug font-medium text-foreground text-pretty">
           {item.name}
         </h3>
 
         {item.description ? (
-          <p className="line-clamp-2 text-muted-foreground text-pretty text-xs leading-snug sm:text-sm">
+          <p className="line-clamp-2 text-muted-foreground text-pretty text-xs leading-snug">
             {item.description}
           </p>
         ) : null}
 
         <p
           className={cn(
-            "mt-auto pt-1 text-sm sm:text-base",
+            "mt-auto pt-1 text-sm",
             price
               ? "font-semibold tabular-nums text-foreground"
               : "font-medium text-muted-foreground",

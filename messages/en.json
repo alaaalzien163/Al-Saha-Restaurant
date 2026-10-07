@@ -38,6 +38,7 @@
     "followUs": "Follow us",
     "explore": "Explore",
     "contact": "Contact",
+    "phoneLabel": "Call {number}",
     "opensInNewTab": "(opens in a new tab)",
     "rights": "All rights reserved.",
     "note": "Fresh flavours, served with a warm welcome."
@@ -62,15 +63,11 @@
   "About": {
     "eyebrow": "Our story",
     "title": "A neighbourhood kitchen rooted in tradition",
-    "paragraph1": "Al-Saha Resto started with a simple idea: cook the food we grew up with and serve it the way it should be — fresh, generous and full of flavour.",
-    "paragraph2": "Every plate is prepared in-house each day, from slow-simmered sauces to bread baked on the premises. No shortcuts, just honest cooking shared around the table.",
+    "paragraph1": "Al-Saha Restaurant started with a simple idea: cook the food we grew up with and serve it the way it should be — fresh, generous and full of flavour.",
     "valueFreshTitle": "Fresh every day",
-    "valueFreshDescription": "Prepared in small batches, never held over.",
     "valueMadeTitle": "Made in-house",
-    "valueMadeDescription": "Sauces, breads and desserts from scratch.",
     "valueWelcomeTitle": "A warm welcome",
-    "valueWelcomeDescription": "Friendly service for families and friends.",
-    "imageAlt": "Warmly lit dining room at Al-Saha Resto glowing with ambient light"
+    "imageAlt": "Warmly lit dining room at Al-Saha Restaurant glowing with ambient light"
   },
   "Menu": {
     "eyebrow": "Our menu",
@@ -82,7 +79,7 @@
     "emptyCategoryDescription": "Please choose another category.",
     "previewEyebrow": "From our kitchen",
     "previewTitle": "Featured dishes",
-    "previewDescription": "A taste of what we're serving. See the full menu for everything.",
+    "previewDescription": " See the full menu for everything .",
     "viewFullMenu": "View full menu",
     "errorTitle": "We couldn't load the menu",
     "errorDescription": "Something went wrong while fetching our dishes. Please try again in a moment.",
@@ -99,16 +96,26 @@
     "fallbackTitle": "Contact details coming soon",
     "fallbackDescription": "We're updating our contact information. In the meantime, explore our menu.",
     "viewMenu": "View the menu",
-    "actionWhatsapp": "Chat on WhatsApp",
+    "actionWhatsapp": "Contact us on WhatsApp",
     "actionPhone": "Call {number}",
     "actionEmail": "Email us",
     "actionDirections": "Get directions",
     "channelVisit": "Visit us",
     "channelCall": "Call us",
+    "channelAddress": "Address",
+    "channelPhone": "Phone",
     "channelEmail": "Email",
     "channelHours": "Opening hours",
     "followUs": "Follow us",
+    "opensInNewTab": "(opens in a new tab)",
     "mapTitle": "Map showing {name}"
+  },
+  "Social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "x": "X",
+    "tiktok": "TikTok",
+    "youtube": "YouTube"
   },
   "Accessibility": {
     "menuCategories": "Menu categories"

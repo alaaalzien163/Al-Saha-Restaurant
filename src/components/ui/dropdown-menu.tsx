@@ -40,7 +40,16 @@ export type DropdownMenuProps = {
   /** Accessible name for the trigger when it has no visible text. */
   label?: string;
   className?: string;
+  /**
+   * Replaces the default trigger button classes instead of merging with them,
+   * so an icon-only trigger can size itself (`size-9`) without inheriting the
+   * default `h-11 px-3` text-button layout.
+   */
+  triggerClassName?: string;
 };
+
+const DEFAULT_TRIGGER_CLASS =
+  "inline-flex h-11 items-center gap-2 rounded-md px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted";
 
 /**
  * Keyboard-accessible dropdown menu (button + role="menu").
@@ -54,6 +63,7 @@ export function DropdownMenu({
   align = "end",
   label,
   className,
+  triggerClassName,
 }: DropdownMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -133,7 +143,7 @@ export function DropdownMenu({
   return (
     <div
       ref={containerRef}
-      className={cn("relative inline-block text-start", className)}
+      className={cn("relative text-start", className)}
     >
       <button
         ref={triggerRef}
@@ -143,7 +153,7 @@ export function DropdownMenu({
         aria-controls={open ? menuId : undefined}
         aria-label={label}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex h-11 items-center gap-2 rounded-md px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+        className={triggerClassName ?? DEFAULT_TRIGGER_CLASS}
       >
         {trigger}
       </button>

@@ -30,17 +30,17 @@ export default function MenuLoading() {
 
       <Container className="py-[var(--section-gap)]">
         <Skeleton className="h-7 w-40" />
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 xl:grid-cols-4 xl:gap-4">
           {Array.from({ length: 8 }, (_, index) => (
             <div
               key={index}
               className="overflow-hidden rounded-lg border border-border bg-card"
             >
-              <Skeleton className="aspect-[3/2] w-full rounded-none sm:aspect-[4/3]" />
-              <div className="space-y-2 p-2.5 sm:space-y-3 sm:p-4">
-                <Skeleton className="h-4 w-2/3 sm:h-5" />
-                <Skeleton className="h-3 w-full sm:h-4" />
-                <Skeleton className="h-3 w-1/2 sm:h-4" />
+              <Skeleton className="aspect-[16/9] w-full rounded-none sm:aspect-[3/2]" />
+              <div className="space-y-2 p-2 sm:p-3">
+                <Skeleton className="h-4 w-2/3" />
+                <Skeleton className="h-3 w-full" />
+                <Skeleton className="h-3 w-1/2" />
               </div>
             </div>
           ))}

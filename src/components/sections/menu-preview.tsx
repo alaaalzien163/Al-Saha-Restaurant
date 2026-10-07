@@ -15,14 +15,14 @@ export function MenuPreviewSkeleton() {
       <Container className="py-[var(--section-gap)]">
         <Skeleton className="h-4 w-28" />
         <Skeleton className="mt-3 h-8 w-56 max-w-full" />
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 3 }, (_, index) => (
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          {Array.from({ length: 4 }, (_, index) => (
             <div
               key={index}
               className="overflow-hidden rounded-lg border border-border bg-card"
             >
-              <Skeleton className="aspect-[4/3] w-full rounded-none" />
-              <div className="space-y-3 p-4">
+              <Skeleton className="aspect-[16/9] w-full rounded-none sm:aspect-[3/2]" />
+              <div className="space-y-2 p-2 sm:p-3">
                 <Skeleton className="h-5 w-2/3" />
                 <Skeleton className="h-4 w-full" />
               </div>
@@ -72,7 +72,7 @@ export async function MenuPreview() {
           </ButtonLink>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
           {featured.map((item) => (
             <MenuItemCard
               key={item.id}

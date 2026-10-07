@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getAdminUser } from "@/lib/auth/session";
 import { safeRedirectPath } from "@/lib/utils/redirect";
+import { Spinner } from "@/components/ui/spinner";
 import {
   Card,
   CardContent,
@@ -50,6 +52,14 @@ function BackArrowIcon() {
   );
 }
 
+/**
+ * Login page.
+ *
+ * The card shell (title, description, back link) renders in the static
+ * prerendered shell. Everything request-specific — the session read and the
+ * `searchParams` promise — lives in `AdminLoginContent` behind a `<Suspense>`
+ * boundary, so `next` streams in from the URL instead of blocking prerender.
+ */
 export default async function AdminLoginPage({
   params,
   searchParams,
@@ -57,12 +67,6 @@ export default async function AdminLoginPage({
   const { lang } = await params;
   setRequestLocale(lang);
   const t = await getTranslations({ locale: lang, namespace: "Admin" });
-
-  // Already authenticated? Skip the form entirely (verified server-side).
-  const user = await getAdminUser();
-  if (user) redirect("/admin");
-
-  const { next } = await searchParams;
 
   return (
     <main className="flex min-h-dvh items-center justify-center px-[var(--page-gutter)] py-12">
@@ -73,7 +77,9 @@ export default async function AdminLoginPage({
             <CardDescription>{t("login.description")}</CardDescription>
           </CardHeader>
           <CardContent>
-            <LoginForm nextPath={safeRedirectPath(next)} />
+            <Suspense fallback={<LoginFallback label={t("loading")} />}>
+              <AdminLoginContent searchParams={searchParams} />
+            </Suspense>
           </CardContent>
         </Card>
 
@@ -89,4 +95,33 @@ export default async function AdminLoginPage({
       </div>
     </main>
   );
+}
+
+/** Lightweight placeholder shown while the URL/session-dependent form streams. */
+function LoginFallback({ label }: { label: string }) {
+  return (
+    <div className="flex min-h-32 items-center justify-center">
+      <Spinner className="text-muted-foreground" label={label} />
+    </div>
+  );
+}
+
+/**
+ * Reads the session and the `next` redirect target, then renders the form.
+ *
+ * Runs inside the `<Suspense>` boundary above: both the Supabase session and
+ * `searchParams` are request-time data and must not sit in the static shell.
+ */
+async function AdminLoginContent({
+  searchParams,
+}: {
+  searchParams: Promise<{ next?: string }>;
+}) {
+  // Already authenticated? Skip the form entirely (verified server-side).
+  const user = await getAdminUser();
+  if (user) redirect("/admin");
+
+  const { next } = await searchParams;
+
+  return <LoginForm nextPath={safeRedirectPath(next)} />;
 }

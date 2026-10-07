@@ -11,7 +11,7 @@ import { MenuItemCard } from "./menu-item-card";
 
 /** Matches the 2 / 3 / 4 column breakpoints of the items grid. */
 const ITEM_IMAGE_SIZES =
-  "(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw";
+  "(min-width: 1280px) 25vw, (min-width: 640px) 33vw, 50vw";
 
 export type MenuBrowserProps = {
   sections: MenuSection[];
@@ -95,7 +95,7 @@ export function MenuBrowser({ sections }: MenuBrowserProps) {
           </div>
 
           {activeSection.items.length > 0 ? (
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 xl:grid-cols-4 xl:gap-4">
               {activeSection.items.map((item) => (
                 <MenuItemCard
                   key={item.id}

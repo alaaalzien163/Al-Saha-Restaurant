@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { siteConfig } from "@/config/site";
-import { pageAlternates } from "@/i18n/seo";
+import { DEFAULT_LOCALE, isLocale } from "@/i18n/constants";
+import { OPEN_GRAPH_LOCALES, pageAlternates } from "@/i18n/seo";
 import {
   About,
   Hero,
@@ -18,6 +19,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang } = await params;
   const t = await getTranslations({ locale: lang, namespace: "Common" });
+  const locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
 
   return {
     title: { absolute: siteConfig.name },
@@ -29,7 +31,7 @@ export async function generateMetadata({
       title: siteConfig.name,
       description: t("siteDescription"),
       url: "/",
-      locale: siteConfig.locale,
+      locale: OPEN_GRAPH_LOCALES[locale],
       images: [
         {
           url: "/images/hero/hero-desktop.jpg",

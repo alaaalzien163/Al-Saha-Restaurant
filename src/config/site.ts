@@ -3,12 +3,12 @@
  * or navigation in individual components.
  */
 export const siteConfig = {
-  name: "Al-Saha Resto",
-  shortName: "Al-Saha",
+  name: "Al-Saha Restaurant",
+  shortName: "Al-Saha Restaurant", 
   monogram: "AS",
   description:
-    "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store.",
-  locale: "en",
+    " Al-Saha Restaurant — browse our freshly prepared dishes and visit us in-store . ",
+  locale: "ar",
   /** Restaurant logo served from /public. Intrinsic size keeps layout stable. */
   logo: {
     src: "/images/logo-removebg-preview(1).png",
@@ -99,8 +99,8 @@ export type SocialPlatform =
   | "tiktok"
   | "youtube";
 
+/** URLs are data; the visible label is resolved from `platform` via i18n. */
 export type SocialLink = {
-  label: string;
   href: string;
   platform: SocialPlatform;
 };
@@ -110,21 +110,31 @@ export type OpeningHours = {
   hours: string;
 };
 
+export type PhoneNumber = {
+  /** Dialable number, e.g. "0987804058". Drives the `tel:` link. */
+  number: string;
+  /** Displayed verbatim, so the shown number always matches the dialed one. */
+  display: string;
+};
+
+export type SiteAddress = {
+  /** Lines rendered in order. Doubles as the fallback for every locale. */
+  lines: readonly string[];
+  /**
+   * Optional per-locale lines keyed by locale ("en", "ar", …). A locale that
+   * has no entry falls back to `lines`, so adding a translation later is a
+   * config-only change and never leaves a locale without an address.
+   */
+  linesByLocale?: Readonly<Record<string, readonly string[]>>;
+  /** Optional external link for a "Get directions" action. */
+  directionsUrl?: string;
+  /** Optional embeddable map URL, rendered lazily in an iframe. */
+  mapEmbedUrl?: string;
+};
+
 export type SiteContact = {
-  address?: {
-    /** Street / city lines, rendered in order. */
-    lines: readonly string[];
-    /** Optional external link for a "Get directions" action. */
-    directionsUrl?: string;
-    /** Optional embeddable map URL, rendered lazily in an iframe. */
-    mapEmbedUrl?: string;
-  };
-  phone?: {
-    /** Dialable number, e.g. "+15551234567". Used for the `tel:` link. */
-    number: string;
-    /** Human-readable display, e.g. "+1 (555) 123-4567". */
-    display: string;
-  };
+  address?: SiteAddress;
+  phoneNumbers?: readonly PhoneNumber[];
   whatsapp?: {
     /** Digits only incl. country code, e.g. "15551234567". */
     number: string;
@@ -137,17 +147,33 @@ export type SiteContact = {
 };
 
 /**
- * Restaurant contact details — the single source of truth for the Contact page.
- *
- * Intentionally empty: no restaurant information is invented here. Every field
- * is optional and is omitted from the UI when unset. Fill in only the values
- * that are actually available:
- *
- *   address: { lines: ["123 Example St", "City"], directionsUrl: "https://maps.google.com/?q=..." },
- *   phone: { number: "+15551234567", display: "+1 (555) 123-4567" },
- *   whatsapp: { number: "15551234567", message: "Hello Al-Saha Resto!" },
- *   email: "hello@example.com",
- *   hours: [{ days: "Mon–Fri", hours: "11:00 – 22:00" }],
- *   socials: [{ label: "Instagram", href: "https://instagram.com/…", platform: "instagram" }],
+ * Restaurant contact details — the single source of truth for the Contact
+ * section, contact page and footer. Every field is optional and omitted from
+ * the UI when unset, so this stays the only place to edit.
  */
-export const siteContact: SiteContact = {};
+export const siteContact: SiteContact = {
+  phoneNumbers: [
+    { number: "0987804058", display: "0987804058" },
+    { number: "0937776213", display: "0937776213" },
+  ],
+  /* Primary contact channel. Digits only incl. country code (Syria: +963). */
+  whatsapp: {
+    number: "963987804058",
+  },
+  address: {
+    lines: ["مشروع دمر الجزيرة 10 الأب تاون مطعم الساحة"],
+    linesByLocale: {
+      /* No official English address yet — add it here when provided. */
+    },
+  },
+  socials: [
+    {
+      platform: "facebook",
+      href: "https://www.facebook.com/share/1JqiP2CTtu/?mibextid=wwXIfr",
+    },
+    {
+      platform: "instagram",
+      href: "https://www.instagram.com/alsaha.rest?stkn=eHJsODZscWluNDRx",
+    },
+  ],
+};

@@ -21,7 +21,7 @@ const PLATFORM_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const PLATFORM_FORMATS = {};
 const BUILD_TIME = new Date();
 
-/** One static route per locale: `/`, `/menu`, `/ar`, `/ar/menu`, … */
+/** One static route per locale: `/`, `/menu`, `/en`, `/en/menu`, … */
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ lang: locale }));
 }

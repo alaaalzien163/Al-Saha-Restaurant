@@ -5,6 +5,7 @@ export { safeRedirectPath } from "./redirect";
 export { isActivePath } from "./nav";
 export { storagePathFromPublicUrl } from "./storage-url";
 export {
+  addressLines,
   hasAnyContact,
   isExternalHref,
   mailtoHref,

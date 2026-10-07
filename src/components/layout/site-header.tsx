@@ -23,6 +23,7 @@ export function SiteHeader() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Brand
           showLogo
+          showWordmark={false}
           href="/admin/login"
           logoAlt={t("logoAlt")}
           label={t("logoAdminLink")}

@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { cacheLife } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import type { MenuItem, PublicMenuItem } from "@/types/domain";
 import type { TableInsert, TableUpdate } from "@/types/database";
@@ -6,10 +6,17 @@ import type { TableInsert, TableUpdate } from "@/types/database";
 /* ------------------------------------------------------------------ Public */
 
 /**
- * Available items, ordered for display. Deduped per request via React cache.
+ * Available items, ordered for display. Deduped per request.
  * Selects only public columns so admin-only fields never leak.
+ *
+ * Private-cached: it reads the request cookies (Supabase session) and is kept
+ * out of the static shell, so Supabase's internal `Date.now()` is not flagged
+ * as prerender-blocking sync IO. `stale: Infinity` keeps it request-scoped.
  */
-export const getAvailableItems = cache(async (): Promise<PublicMenuItem[]> => {
+export async function getAvailableItems(): Promise<PublicMenuItem[]> {
+  "use cache: private";
+  cacheLife({ stale: Infinity });
+
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("items")
@@ -24,7 +31,7 @@ export const getAvailableItems = cache(async (): Promise<PublicMenuItem[]> => {
   }
 
   return data ?? [];
-});
+}
 
 /* ------------------------------------------------------------------- Admin */
 
@@ -33,6 +40,9 @@ const ADMIN_ITEM_COLUMNS =
 
 /** All items (available or not), optionally filtered by category. */
 export async function getAdminItems(categoryId?: string): Promise<MenuItem[]> {
+  "use cache: private";
+  cacheLife({ stale: Infinity });
+
   const supabase = await createClient();
   const query = supabase
     .from("items")
@@ -52,6 +62,9 @@ export async function getAdminItems(categoryId?: string): Promise<MenuItem[]> {
 }
 
 export async function getAdminItemById(id: string): Promise<MenuItem | null> {
+  "use cache: private";
+  cacheLife({ stale: Infinity });
+
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("items")

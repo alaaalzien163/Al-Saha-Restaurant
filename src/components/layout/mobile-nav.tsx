@@ -103,6 +103,7 @@ export function MobileNav() {
             <Brand
               onNavigate={close}
               showLogo
+              showWordmark={false}
               href="/admin/login"
               logoAlt={t("logoAlt")}
               label={t("logoAdminLink")}

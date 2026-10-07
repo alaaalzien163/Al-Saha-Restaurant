@@ -62,21 +62,15 @@ export async function About() {
               <Text tone="muted" className="max-w-prose text-pretty">
                 {t("paragraph1")}
               </Text>
-              <Text tone="muted" className="max-w-prose text-pretty">
-                {t("paragraph2")}
-              </Text>
             </div>
 
             <ul className="mt-8 space-y-4">
-              {VALUE_KEYS.map(([titleKey, descriptionKey]) => (
+              {VALUE_KEYS.map(([titleKey]) => (
                 <li key={titleKey} className="flex gap-3">
                   <CheckIcon />
                   <div>
                     <p className="font-medium text-foreground">
                       {t(titleKey)}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {t(descriptionKey)}
                     </p>
                   </div>
                 </li>

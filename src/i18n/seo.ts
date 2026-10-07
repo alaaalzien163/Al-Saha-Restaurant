@@ -9,8 +9,8 @@ import {
 /**
  * `hreflang` alternates for an application path (no locale prefix).
  *
- *     languageAlternates("/menu") -> { en: "/menu", ar: "/ar/menu" }
- *     languageAlternates("/")     -> { en: "/",     ar: "/ar" }
+ *     languageAlternates("/menu") -> { ar: "/menu", en: "/en/menu" }
+ *     languageAlternates("/")     -> { ar: "/",     en: "/en" }
  *
  * Returned values are root-relative; Next resolves them against
  * `metadataBase`.
@@ -36,7 +36,7 @@ export function languageAlternates(
  * `alternates` block for a page: a canonical URL in the current locale plus
  * `hreflang` links for every locale (and `x-default`).
  *
- *     pageAlternates("ar", "/menu") -> { canonical: "/ar/menu", languages: {…} }
+ *     pageAlternates("ar", "/menu") -> { canonical: "/menu", languages: {…} }
  */
 export function pageAlternates(lang: string, path: string) {
   const current = isLocale(lang) ? lang : DEFAULT_LOCALE;
