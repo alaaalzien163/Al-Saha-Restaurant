@@ -9,6 +9,14 @@ const EN_MESSAGES: Record<string, string> = {
   "field.descriptionTooLong": "Description must be {max} characters or fewer.",
   "field.displayOrderNotWhole": "Display order must be a whole number.",
   "field.displayOrderNegative": "Display order cannot be negative.",
+  "announcement.messageRequired": "Enter the announcement message.",
+  "announcement.messageTooLong": "Message must be {max} characters or fewer.",
+  "announcement.linkInvalid":
+    "Enter a link that starts with / or https:// and is safe to open.",
+  "announcement.linkLabelTooLong":
+    "Link label must be {max} characters or fewer.",
+  "announcement.dateInvalid": "Enter a valid date and time.",
+  "announcement.endBeforeStart": "The end time must be after the start time.",
   "item.categoryRequired": "Please choose a category.",
   "item.priceRequired": "Price is required.",
   "item.priceNotNumber": "Price must be a number.",
@@ -42,6 +50,12 @@ const EN_MESSAGES: Record<string, string> = {
   "actions.itemAvailabilityFailed": "Could not update the item availability.",
   "actions.itemDeleteFailed": "Could not delete the item.",
   "actions.itemIdMissing": "Missing item id.",
+  "actions.announcementCreateFailed": "Could not create the announcement.",
+  "actions.announcementUpdateFailed": "Could not update the announcement.",
+  "actions.announcementStatusFailed":
+    "Could not update the announcement status.",
+  "actions.announcementDeleteFailed": "Could not delete the announcement.",
+  "actions.announcementIdMissing": "Missing announcement id.",
   "actions.imageUploadFailed": "Image upload failed. Please try again.",
   "actions.profileUpdateFailed": "Could not update your profile.",
   "actions.accountNoEmail": "Your account has no email on file.",

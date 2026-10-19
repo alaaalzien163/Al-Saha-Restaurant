@@ -44,6 +44,8 @@ export { Input } from "./input";
 export type { InputProps } from "./input";
 export { PasswordInput } from "./password-input";
 export type { PasswordInputProps } from "./password-input";
+export { ProgressBar } from "./progress-bar";
+export type { ProgressBarProps } from "./progress-bar";
 export { Label } from "./label";
 export type { LabelProps } from "./label";
 export { Select } from "./select";

@@ -32,3 +32,27 @@ export function formatPrice(
 
   return `${amount} ${label}`;
 }
+
+/**
+ * Formats a stored timestamp for display, using the active locale's date and
+ * time conventions.
+ *
+ * `numberingSystem: "latn"` keeps Western digits in both locales, matching
+ * `formatPrice`. Returns `null` for a missing or unparseable value so callers
+ * hide the row instead of rendering "Invalid Date".
+ */
+export function formatDateTime(
+  value: string | null | undefined,
+  locale: string,
+): string | null {
+  if (!value) return null;
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: "short",
+    timeStyle: "short",
+    numberingSystem: "latn",
+  }).format(date);
+}

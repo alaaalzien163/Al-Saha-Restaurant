@@ -48,6 +48,15 @@ export function ItemsIcon(props: AdminIconProps) {
   );
 }
 
+export function AnnouncementsIcon(props: AdminIconProps) {
+  return (
+    <svg {...strokeProps(props)}>
+      <path d="M4 10v4a1 1 0 0 0 1 1h3l4 3.5V5.5L8 9H5a1 1 0 0 0-1 1z" />
+      <path d="M16 9a4 4 0 0 1 0 6" />
+    </svg>
+  );
+}
+
 export function ProfileIcon(props: AdminIconProps) {
   return (
     <svg {...strokeProps(props)}>
@@ -139,5 +148,6 @@ export const adminNavIcons: Record<
   overview: OverviewIcon,
   categories: CategoriesIcon,
   items: ItemsIcon,
+  announcements: AnnouncementsIcon,
   profile: ProfileIcon,
 };

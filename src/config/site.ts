@@ -78,6 +78,11 @@ export const siteConfig = {
     { key: "overview", label: "Overview", href: "/admin" },
     { key: "categories", label: "Categories", href: "/admin/categories" },
     { key: "items", label: "Items", href: "/admin/items" },
+    {
+      key: "announcements",
+      label: "Announcements",
+      href: "/admin/announcements",
+    },
     { key: "profile", label: "Profile", href: "/admin/profile" },
   ],
 } as const;

@@ -155,6 +155,21 @@
   --text-4xl: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
 }
 
+/* ============================================================
+   Announcement bar
+   The track renders the announcements twice and slides by
+   exactly one copy (-50%), so the loop is seamless at any width.
+   ============================================================ */
+
+@keyframes announcement-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   *,
   ::after,

@@ -1,3 +1,11 @@
+export type {
+  AnnouncementActionResult,
+  AnnouncementFieldErrors,
+  AnnouncementInput,
+  AnnouncementValidation,
+  AnnouncementValues,
+} from "./announcement";
+export { isSafeAnnouncementUrl, validateAnnouncement } from "./announcement";
 export type { ValidationResult } from "./result";
 export { firstError, invalid, valid } from "./result";
 export type { Translator } from "./translator";

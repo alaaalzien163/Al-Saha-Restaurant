@@ -120,6 +120,15 @@
   "Accessibility": {
     "menuCategories": "Menu categories"
   },
+  "Announcements": {
+    "regionLabel": "Announcements",
+    "opensInNewTab": "(opens in a new tab)"
+  },
+  "Splash": {
+    "progressLabel": "Loading the restaurant website",
+    "loading": "Loading",
+    "logoAlt": "Al-Saha Resto logo"
+  },
   "Admin": {
     "skipToContent": "Skip to content",
     "loading": "Loading",
@@ -147,7 +156,9 @@
       "actions": "Actions",
       "item": "Item",
       "category": "Category",
-      "price": "Price"
+      "price": "Price",
+      "message": "Message",
+      "schedule": "Schedule"
     },
     "header": {
       "signOut": "Sign out"
@@ -157,6 +168,7 @@
       "overview": "Overview",
       "categories": "Categories",
       "items": "Items",
+      "announcements": "Announcements",
       "profile": "Profile"
     },
     "mobileNav": {
@@ -275,6 +287,54 @@
         "all": "All"
       }
     },
+    "announcements": {
+      "title": "Announcements",
+      "description": "Messages shown in the bar at the top of the public site.",
+      "add": "Add announcement",
+      "emptyTitle": "No announcements yet",
+      "emptyDescription": "Create your first announcement to show it on the public site.",
+      "caption": "Announcements",
+      "displayOrder": "Display order {order}",
+      "scheduleAlways": "Always on",
+      "scheduleFrom": "From {from}",
+      "scheduleUntil": "Until {until}",
+      "scheduleRange": "{from} – {until}",
+      "form": {
+        "messageAr": "Message (Arabic)",
+        "messageEn": "Message (English)",
+        "messageEnHint": "Optional — the Arabic message is shown when this is empty.",
+        "link": "Link (optional)",
+        "linkHint": "An internal path like /menu, or a full https:// address.",
+        "linkLabelAr": "Link label (Arabic)",
+        "linkLabelEn": "Link label (English)",
+        "preview": "Preview",
+        "previewEmpty": "Nothing to preview yet.",
+        "startsAt": "Starts at (optional)",
+        "endsAt": "Ends at (optional)",
+        "scheduleHint": "Leave both empty to keep the announcement live whenever it is active.",
+        "order": "Display order",
+        "orderHint": "Lower numbers appear first.",
+        "activeLabel": "Active — eligible for the public bar",
+        "create": "Create announcement",
+        "createdToast": "Announcement created",
+        "updatedToast": "Announcement updated"
+      },
+      "dialog": {
+        "createTitle": "New announcement",
+        "createDescription": "Add a message to the public announcement bar.",
+        "editTitle": "Edit announcement"
+      },
+      "delete": {
+        "title": "Delete announcement",
+        "confirm": "Delete “{message}”? This cannot be undone.",
+        "note": "It will be removed from the public site immediately.",
+        "toast": "Announcement deleted"
+      },
+      "toggle": {
+        "activatedToast": "Announcement activated",
+        "deactivatedToast": "Announcement deactivated"
+      }
+    },
     "profile": {
       "title": "Profile",
       "description": "Your admin account details.",
@@ -337,6 +397,14 @@
       "empty": "The selected image is empty.",
       "tooLarge": "Image must be 5 MB or smaller."
     },
+    "announcement": {
+      "messageRequired": "Enter the announcement message.",
+      "messageTooLong": "Message must be {max} characters or fewer.",
+      "linkInvalid": "Enter a link that starts with / or https:// and is safe to open.",
+      "linkLabelTooLong": "Link label must be {max} characters or fewer.",
+      "dateInvalid": "Enter a valid date and time.",
+      "endBeforeStart": "The end time must be after the start time."
+    },
     "actions": {
       "correctFields": "Please correct the highlighted fields.",
       "categoryCreateFailed": "Could not create the category.",
@@ -351,6 +419,11 @@
       "itemAvailabilityFailed": "Could not update the item availability.",
       "itemDeleteFailed": "Could not delete the item.",
       "itemIdMissing": "Missing item id.",
+      "announcementCreateFailed": "Could not create the announcement.",
+      "announcementUpdateFailed": "Could not update the announcement.",
+      "announcementStatusFailed": "Could not update the announcement status.",
+      "announcementDeleteFailed": "Could not delete the announcement.",
+      "announcementIdMissing": "Missing announcement id.",
       "imageUploadFailed": "Image upload failed. Please try again.",
       "profileUpdateFailed": "Could not update your profile.",
       "accountNoEmail": "Your account has no email on file.",

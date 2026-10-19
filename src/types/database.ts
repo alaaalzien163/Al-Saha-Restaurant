@@ -107,6 +107,51 @@ export type Database = {
           },
         ];
       };
+      announcements: {
+        Row: {
+          id: string;
+          message_ar: string;
+          message_en: string | null;
+          link_url: string | null;
+          link_label_ar: string | null;
+          link_label_en: string | null;
+          is_active: boolean;
+          starts_at: string | null;
+          ends_at: string | null;
+          display_order: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          message_ar: string;
+          message_en?: string | null;
+          link_url?: string | null;
+          link_label_ar?: string | null;
+          link_label_en?: string | null;
+          is_active?: boolean;
+          starts_at?: string | null;
+          ends_at?: string | null;
+          display_order?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          message_ar?: string;
+          message_en?: string | null;
+          link_url?: string | null;
+          link_label_ar?: string | null;
+          link_label_en?: string | null;
+          is_active?: boolean;
+          starts_at?: string | null;
+          ends_at?: string | null;
+          display_order?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
           id: string;

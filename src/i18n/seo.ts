@@ -60,17 +60,23 @@ export const OPEN_GRAPH_LOCALES: Record<AppLocale, string> = {
 export const DEFAULT_HREFLANG = DEFAULT_LOCALE;
 
 /**
- * The single social-share image for every public page: a dedicated 1200x630
- * Open Graph card (`public/images/social-preview.png`) built from the same
- * restaurant logo the Header uses, on the brand palette. An existing local
- * asset - no external image host is ever introduced. `width`/`height` are the
- * file's real pixel dimensions - never guessed.
+ * The single social-preview image for every public page: a dedicated 1200x630
+ * Open Graph card built from the same restaurant logo the Header uses, on the
+ * brand palette. An existing local asset - no external image host is ever
+ * introduced. `width`/`height` are the file's real pixel dimensions - never
+ * guessed.
+ *
+ * The path is versioned (`-v2`) purely as a CDN/platform cache-buster: social
+ * crawlers aggressively cache `og:image` per URL, so pointing at a new file
+ * name is what makes WhatsApp/Facebook/LinkedIn re-fetch the artwork. The
+ * canonical page URL is deliberately NOT versioned - `og:url` and
+ * `alternates.canonical` stay on the clean URL.
  *
  * 1200x630 is the canonical Open Graph / `summary_large_image` ratio, so
  * WhatsApp, Facebook, Telegram and LinkedIn all render a full-bleed preview.
  */
 export const SOCIAL_PREVIEW_IMAGE = {
-  path: "/images/social-preview.png",
+  path: "/images/social-preview-v2.png",
   width: 1200,
   height: 630,
   alt: siteConfig.name,

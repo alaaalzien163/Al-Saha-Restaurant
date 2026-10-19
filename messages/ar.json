@@ -120,6 +120,15 @@
   "Accessibility": {
     "menuCategories": "أقسام القائمة"
   },
+  "Announcements": {
+    "regionLabel": "الإعلانات",
+    "opensInNewTab": "(يفتح في نافذة جديدة)"
+  },
+  "Splash": {
+    "progressLabel": "جارٍ تحميل موقع المطعم",
+    "loading": "جارٍ التحميل",
+    "logoAlt": "شعار مطعم الساحة"
+  },
   "Admin": {
     "skipToContent": "تخطَّ إلى المحتوى",
     "loading": "جارٍ التحميل",
@@ -147,7 +156,9 @@
       "actions": "الإجراءات",
       "item": "الصنف",
       "category": "التصنيف",
-      "price": "السعر"
+      "price": "السعر",
+      "message": "الرسالة",
+      "schedule": "الجدولة"
     },
     "header": {
       "signOut": "تسجيل الخروج"
@@ -157,6 +168,7 @@
       "overview": "نظرة عامة",
       "categories": "التصنيفات",
       "items": "الأصناف",
+      "announcements": "الإعلانات",
       "profile": "الملف الشخصي"
     },
     "mobileNav": {
@@ -275,6 +287,54 @@
         "all": "الكل"
       }
     },
+    "announcements": {
+      "title": "الإعلانات",
+      "description": "رسائل تظهر في الشريط أعلى الموقع العام.",
+      "add": "إضافة إعلان",
+      "emptyTitle": "لا توجد إعلانات بعد",
+      "emptyDescription": "أنشئ أول إعلان ليظهر على الموقع العام.",
+      "caption": "الإعلانات",
+      "displayOrder": "الترتيب الظاهر {order}",
+      "scheduleAlways": "دائم",
+      "scheduleFrom": "من {from}",
+      "scheduleUntil": "حتى {until}",
+      "scheduleRange": "{from} – {until}",
+      "form": {
+        "messageAr": "الرسالة (بالعربية)",
+        "messageEn": "الرسالة (بالإنجليزية)",
+        "messageEnHint": "اختياري — تُعرض الرسالة العربية عند تركه فارغًا.",
+        "link": "الرابط (اختياري)",
+        "linkHint": "مسار داخلي مثل ‎/menu، أو عنوان كامل يبدأ بـ ‎https://.",
+        "linkLabelAr": "نص الرابط (بالعربية)",
+        "linkLabelEn": "نص الرابط (بالإنجليزية)",
+        "preview": "معاينة",
+        "previewEmpty": "لا يوجد ما يمكن معاينته بعد.",
+        "startsAt": "يبدأ في (اختياري)",
+        "endsAt": "ينتهي في (اختياري)",
+        "scheduleHint": "اترك الحقلين فارغين ليبقى الإعلان ظاهرًا ما دام نشطًا.",
+        "order": "الترتيب الظاهر",
+        "orderHint": "الأرقام الأصغر تظهر أولًا.",
+        "activeLabel": "نشط — مؤهّل للظهور في الشريط العام",
+        "create": "إنشاء إعلان",
+        "createdToast": "تم إنشاء الإعلان",
+        "updatedToast": "تم تحديث الإعلان"
+      },
+      "dialog": {
+        "createTitle": "إعلان جديد",
+        "createDescription": "أضف رسالة إلى شريط الإعلانات العام.",
+        "editTitle": "تعديل الإعلان"
+      },
+      "delete": {
+        "title": "حذف الإعلان",
+        "confirm": "حذف «{message}»؟ لا يمكن التراجع عن هذا الإجراء.",
+        "note": "سيُزال من الموقع العام فورًا.",
+        "toast": "تم حذف الإعلان"
+      },
+      "toggle": {
+        "activatedToast": "تم تفعيل الإعلان",
+        "deactivatedToast": "تم إلغاء تفعيل الإعلان"
+      }
+    },
     "profile": {
       "title": "الملف الشخصي",
       "description": "بيانات حساب الإدارة الخاص بك.",
@@ -337,6 +397,14 @@
       "empty": "الصورة المحددة فارغة.",
       "tooLarge": "يجب ألا تتجاوز حجم الصورة 5 ميغابايت."
     },
+    "announcement": {
+      "messageRequired": "أدخل نص الإعلان.",
+      "messageTooLong": "يجب ألا يتجاوز النص {max} حرفًا.",
+      "linkInvalid": "أدخل رابطًا يبدأ بـ ‎/ أو ‎https:// وآمنًا للفتح.",
+      "linkLabelTooLong": "يجب ألا يتجاوز نص الرابط {max} حرفًا.",
+      "dateInvalid": "أدخل تاريخًا ووقتًا صالحين.",
+      "endBeforeStart": "يجب أن يكون وقت الانتهاء بعد وقت البدء."
+    },
     "actions": {
       "correctFields": "يرجى تصحيح الحقول المحددة.",
       "categoryCreateFailed": "تعذّر إنشاء الفئة.",
@@ -351,6 +419,11 @@
       "itemAvailabilityFailed": "تعذّر تحديث حالة توفّر الصنف.",
       "itemDeleteFailed": "تعذّر حذف الصنف.",
       "itemIdMissing": "معرّف الصنف مفقود.",
+      "announcementCreateFailed": "تعذّر إنشاء الإعلان.",
+      "announcementUpdateFailed": "تعذّر تحديث الإعلان.",
+      "announcementStatusFailed": "تعذّر تحديث حالة الإعلان.",
+      "announcementDeleteFailed": "تعذّر حذف الإعلان.",
+      "announcementIdMissing": "معرّف الإعلان مفقود.",
       "imageUploadFailed": "فشل رفع الصورة. يُرجى المحاولة مرة أخرى.",
       "profileUpdateFailed": "تعذّر تحديث ملفك الشخصي.",
       "accountNoEmail": "لا يوجد بريد إلكتروني مسجّل لحسابك.",

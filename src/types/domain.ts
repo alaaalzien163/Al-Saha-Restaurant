@@ -28,6 +28,27 @@ export type PublicMenuItem = Pick<
   | "is_available"
 >;
 
+/** Full announcement row, including admin-only timestamps. */
+export type Announcement = TableRow<"announcements">;
+
+/**
+ * Public subset of an announcement exposed to the public site (no timestamps).
+ * Keeps the public query minimal and documents exactly what is public.
+ */
+export type PublicAnnouncement = Pick<
+  Announcement,
+  | "id"
+  | "message_ar"
+  | "message_en"
+  | "link_url"
+  | "link_label_ar"
+  | "link_label_en"
+  | "is_active"
+  | "starts_at"
+  | "ends_at"
+  | "display_order"
+>;
+
 /** The authenticated admin's profile row (never exposed publicly). */
 export type Profile = TableRow<"profiles">;
 
