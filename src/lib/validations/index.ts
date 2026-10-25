@@ -9,6 +9,7 @@ export { isSafeAnnouncementUrl, validateAnnouncement } from "./announcement";
 export type { ValidationResult } from "./result";
 export { firstError, invalid, valid } from "./result";
 export type { Translator } from "./translator";
+export { isSafeHttpOrPathUrl } from "./url";
 export type { SupabaseEnv, SupabaseEnvInput } from "./env";
 export { validateSupabaseEnv } from "./env";
 export type {

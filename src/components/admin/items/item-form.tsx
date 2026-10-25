@@ -47,8 +47,7 @@ export type ItemFormProps = {
 
 /**
  * The single reusable item form (create + edit) with client-side image preview.
- * The preview uses a local object URL (plain <img>) so no oversized original is
- * fetched; the stored image is always rendered with next/image.
+ * The selected category is verified server-side against `public.categories`.
  */
 export function ItemForm({
   mode,
@@ -65,6 +64,7 @@ export function ItemForm({
   const [imageError, setImageError] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const [categoryId, setCategoryId] = useState(item?.category_id ?? "");
 
   // Revoke the previous object URL whenever it changes or on unmount.
   useEffect(() => {
@@ -160,7 +160,8 @@ export function ItemForm({
               <Select
                 id={id}
                 name="category_id"
-                defaultValue={item?.category_id ?? ""}
+                value={categoryId}
+                onChange={(event) => setCategoryId(event.target.value)}
                 aria-describedby={describedBy}
                 aria-invalid={invalid}
                 disabled={isPending}
@@ -181,8 +182,8 @@ export function ItemForm({
             <Field
               id={`${formId}-price`}
               label={t("items.form.price")}
+              description={t("items.form.priceHint")}
               error={fieldErrors?.price}
-              required
             >
               {({ id, describedBy, invalid }) => (
                 <Input

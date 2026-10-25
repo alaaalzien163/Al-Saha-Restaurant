@@ -1,5 +1,6 @@
 import { cacheLife } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { toPostgrestLikePattern } from "@/lib/utils/search";
 import type { MenuItem, PublicMenuItem } from "@/types/domain";
 import type { TableInsert, TableUpdate } from "@/types/database";
 
@@ -38,27 +39,131 @@ export async function getAvailableItems(): Promise<PublicMenuItem[]> {
 const ADMIN_ITEM_COLUMNS =
   "id, category_id, name, description, price, image_url, display_order, is_available, created_at, updated_at";
 
-/** All items (available or not), optionally filtered by category. */
-export async function getAdminItems(categoryId?: string): Promise<MenuItem[]> {
+/** Sort orders offered by the admin item list. */
+export type AdminItemsSort = "order" | "name" | "price_asc" | "price_desc";
+
+/** Availability filter for the admin item list. */
+export type AdminItemsAvailability = "all" | "available" | "unavailable";
+
+/** Filters accepted by the admin item list. */
+export type AdminItemsPageQuery = {
+  /** Show a single category. */
+  categoryId?: string;
+  search?: string;
+  availability?: AdminItemsAvailability;
+  sort?: AdminItemsSort;
+  page?: number;
+  pageSize?: number;
+};
+
+export type AdminItemsPageResult = {
+  items: MenuItem[];
+  /** Number of items matching the filters, across every page. */
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+};
+
+export const ADMIN_ITEMS_PAGE_SIZE = 10;
+
+/** Minimum/maximum page size, so a crafted `pageSize` cannot exhaust the DB. */
+const MIN_PAGE_SIZE = 1;
+const MAX_PAGE_SIZE = 50;
+
+function clampPageSize(value: number | undefined): number {
+  if (!Number.isFinite(value)) return ADMIN_ITEMS_PAGE_SIZE;
+  return Math.min(MAX_PAGE_SIZE, Math.max(MIN_PAGE_SIZE, Math.floor(value!)));
+}
+
+/** Whole pages only; anything invalid falls back to the first page. */
+function normalizePage(value: number | undefined): number {
+  if (!Number.isFinite(value) || (value as number) < 1) return 1;
+  return Math.floor(value as number);
+}
+
+/**
+ * One page of admin items, filtered/sorted in PostgREST rather than in memory,
+ * so search, availability, sort and pagination stay correct as the menu grows.
+ */
+export async function getAdminItemsPage(
+  query: AdminItemsPageQuery,
+): Promise<AdminItemsPageResult> {
   "use cache: private";
   cacheLife({ stale: Infinity });
 
-  const supabase = await createClient();
-  const query = supabase
-    .from("items")
-    .select(ADMIN_ITEM_COLUMNS)
-    .order("display_order", { ascending: true })
-    .order("name", { ascending: true });
+  const pageSize = clampPageSize(query.pageSize);
+  const requestedPage = normalizePage(query.page);
 
-  const { data, error } = await (categoryId
-    ? query.eq("category_id", categoryId)
-    : query);
+  const supabase = await createClient();
+  let request = supabase
+    .from("items")
+    .select(ADMIN_ITEM_COLUMNS, { count: "exact" });
+
+  if (query.categoryId) {
+    request = request.eq("category_id", query.categoryId);
+  }
+
+  const pattern = toPostgrestLikePattern(query.search ?? "");
+  if (pattern) {
+    request = request.or(
+      `name.ilike.${pattern},description.ilike.${pattern}`,
+    );
+  }
+
+  if (query.availability === "available") {
+    request = request.eq("is_available", true);
+  } else if (query.availability === "unavailable") {
+    request = request.eq("is_available", false);
+  }
+
+  switch (query.sort) {
+    case "name":
+      request = request
+        .order("name", { ascending: true })
+        .order("display_order", { ascending: true });
+      break;
+    case "price_asc":
+      // Null prices sort last in both directions, so items without a price
+      // never break the comparison.
+      request = request.order("price", {
+        ascending: true,
+        nullsFirst: false,
+      });
+      break;
+    case "price_desc":
+      request = request.order("price", {
+        ascending: false,
+        nullsFirst: false,
+      });
+      break;
+    default:
+      request = request
+        .order("display_order", { ascending: true })
+        .order("name", { ascending: true });
+      break;
+  }
+
+  const from = (requestedPage - 1) * pageSize;
+  const { data, count, error } = await request.range(
+    from,
+    from + pageSize - 1,
+  );
 
   if (error) {
     throw new Error(`Failed to load items: ${error.message}`);
   }
 
-  return data ?? [];
+  const total = count ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+  return {
+    items: data ?? [],
+    total,
+    page: requestedPage,
+    pageSize,
+    totalPages,
+  };
 }
 
 export async function getAdminItemById(id: string): Promise<MenuItem | null> {

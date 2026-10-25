@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "title": "Al-Saha Resto",
-    "titleTemplate": "%s | Al-Saha Resto",
-    "description": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store."
+    "title": "Al-Saha Restaurant",
+    "titleTemplate": "%s | Al-Saha Restaurant",
+    "description": "Al-Saha Restaurant — browse our freshly prepared dishes and visit us in-store."
   },
   "Common": {
     "skipToContent": "Skip to content",
     "loadingPage": "Loading page",
-    "siteDescription": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store.",
+    "siteDescription": "Al-Saha Restaurant — browse our freshly prepared dishes and visit us in-store.",
     "closeDialog": "Close dialog",
     "dismissNotification": "Dismiss notification",
     "required": "(required)",
@@ -20,8 +20,8 @@
     "closeMenu": "Close navigation menu",
     "languageSwitcher": "Language",
     "switchTo": "Switch to {language}",
-    "logoAlt": "Al-Saha Resto logo",
-    "logoAdminLink": "Al-Saha Resto admin login",
+    "logoAlt": "Al-Saha Restaurant logo",
+    "logoAdminLink": "Al-Saha Restaurant admin login",
     "home": "Home",
     "menu": "Menu",
     "about": "About",
@@ -34,7 +34,7 @@
     "toggle": "{current} theme — activate to switch to {next}"
   },
   "Footer": {
-    "description": "Al-Saha Resto — browse our freshly prepared dishes and visit us in-store.",
+    "description": "Al-Saha Restaurant — browse our freshly prepared dishes and visit us in-store.",
     "followUs": "Follow us",
     "explore": "Explore",
     "contact": "Contact",
@@ -85,14 +85,27 @@
     "errorDescription": "Something went wrong while fetching our dishes. Please try again in a moment.",
     "retry": "Try again",
     "metaTitle": "Menu",
-    "metaDescription": "Browse the full Al-Saha Resto menu — freshly prepared dishes, organised by category."
+    "metaDescription": "Browse the full Al-Saha Restaurant menu — freshly prepared dishes, organised by category.",
+    "searchLabel": "Search the menu",
+    "searchPlaceholder": "Search dishes?",
+    "clearSearch": "Clear search",
+    "allCategories": "All",
+    "sortLabel": "Sort dishes",
+    "sortDefault": "Default order",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "resultsCount": "{count, plural, =0 {No dishes} one {# dish} other {# dishes}}",
+    "resultsFiltered": "{shown} of {total} dishes",
+    "noResultsTitle": "No dishes match your search",
+    "noResultsDescription": "Try a different word, or choose another category.",
+    "clearFilters": "Clear search"
   },
   "Contact": {
     "eyebrow": "Contact",
     "title": "Get in touch",
     "description": "Find us, call ahead, or send a message — we'd love to hear from you.",
     "metaTitle": "Contact",
-    "metaDescription": "Get in touch with Al-Saha Resto — address, phone, opening hours and directions.",
+    "metaDescription": "Get in touch with Al-Saha Restaurant — address, phone, opening hours and directions.",
     "fallbackTitle": "Contact details coming soon",
     "fallbackDescription": "We're updating our contact information. In the meantime, explore our menu.",
     "viewMenu": "View the menu",
@@ -127,7 +140,7 @@
   "Splash": {
     "progressLabel": "Loading the restaurant website",
     "loading": "Loading",
-    "logoAlt": "Al-Saha Resto logo"
+    "logoAlt": "Al-Saha Restaurant logo"
   },
   "Admin": {
     "skipToContent": "Skip to content",
@@ -156,6 +169,7 @@
       "actions": "Actions",
       "item": "Item",
       "category": "Category",
+      "updated": "Last updated",
       "price": "Price",
       "message": "Message",
       "schedule": "Schedule"
@@ -252,6 +266,7 @@
         "category": "Category",
         "categoryPlaceholder": "Select a category",
         "price": "Price",
+        "priceHint": "Leave empty if the price is unavailable.",
         "order": "Display order",
         "orderHint": "Lower first.",
         "description": "Description",
@@ -283,8 +298,31 @@
         "unavailableToast": "Item marked unavailable"
       },
       "filter": {
-        "label": "Filter by category",
-        "all": "All"
+        "categoryLabel": "Category",
+        "allCategories": "All categories",
+        "availabilityLabel": "Availability",
+        "availabilityAll": "All",
+        "availabilityAvailable": "Available",
+        "availabilityUnavailable": "Unavailable",
+        "sortLabel": "Sort",
+        "sortOrder": "Default order",
+        "sortName": "Name (A–Z)",
+        "sortPriceAsc": "Price: low to high",
+        "sortPriceDesc": "Price: high to low",
+        "clear": "Clear filters"
+      },
+      "searchLabel": "Search items",
+      "searchPlaceholder": "Search by name or description?",
+      "clearSearch": "Clear search",
+      "matchCount": "{count, plural, =0 {No matching items} one {# matching item} other {# matching items}}",
+      "clearFilters": "Clear search and filters",
+      "emptySearchTitle": "No items match your filters",
+      "emptySearchDescription": "Try a different search term, or clear the filters.",
+      "pagination": {
+        "label": "Pagination",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {page} of {pages}"
       }
     },
     "announcements": {
@@ -369,7 +407,7 @@
     },
     "item": {
       "categoryRequired": "Please choose a category.",
-      "priceRequired": "Price is required.",
+      "categoryNotFound": "That category no longer exists.",
       "priceNotNumber": "Price must be a number.",
       "priceNegative": "Price cannot be negative."
     },
@@ -395,7 +433,7 @@
     "image": {
       "typeInvalid": "Choose a JPEG, PNG, WebP, AVIF or GIF image.",
       "empty": "The selected image is empty.",
-      "tooLarge": "Image must be 5 MB or smaller."
+      "tooLarge": "Image must be 4 MB or smaller."
     },
     "announcement": {
       "messageRequired": "Enter the announcement message.",

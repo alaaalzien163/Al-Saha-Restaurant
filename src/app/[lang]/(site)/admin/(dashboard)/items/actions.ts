@@ -16,6 +16,7 @@ import {
   setItemAvailability,
   updateItemRecord,
 } from "@/lib/data/items";
+import { getAdminCategoryById } from "@/lib/data/categories";
 import {
   removeMenuImageByUrl,
   uploadMenuImage,
@@ -25,6 +26,38 @@ import type { MenuItem } from "@/types/domain";
 function readId(formData: FormData): string {
   const id = formData.get("id");
   return typeof id === "string" ? id.trim() : "";
+}
+
+function revalidateItemLists(): void {
+  revalidatePath("/[lang]/admin/items", "page");
+}
+
+/**
+ * Rejects a mutation when the submitted category does not exist in
+ * `public.categories`. `items.category_id` is a foreign key, so this turns a
+ * raw database error into a field-level message.
+ */
+async function verifyCategoryExists(
+  categoryId: string,
+  t: Translator,
+): Promise<ItemActionResult | null> {
+  let category;
+  try {
+    category = await getAdminCategoryById(categoryId);
+  } catch (error) {
+    console.error("Item category lookup failed:", error);
+    return { ok: false, message: t("actions.itemLoadFailed") };
+  }
+
+  if (!category) {
+    return {
+      ok: false,
+      message: t("actions.correctFields"),
+      fieldErrors: { category_id: t("item.categoryNotFound") },
+    };
+  }
+
+  return null;
 }
 
 function readImageFile(formData: FormData): File | null {
@@ -71,6 +104,12 @@ export async function createItem(
     };
   }
 
+  const categoryError = await verifyCategoryExists(
+    validation.value.category_id,
+    t,
+  );
+  if (categoryError) return categoryError;
+
   const file = readImageFile(formData);
   if (file) {
     const imageCheck = validateImageFile(file, t);
@@ -107,7 +146,7 @@ export async function createItem(
     return { ok: false, message: t("actions.itemCreateFailed") };
   }
 
-  revalidatePath("/[lang]/admin/items", "page");
+  revalidateItemLists();
   return { ok: true };
 }
 
@@ -130,6 +169,12 @@ export async function updateItem(
       fieldErrors: validation.fields,
     };
   }
+
+  const categoryError = await verifyCategoryExists(
+    validation.value.category_id,
+    t,
+  );
+  if (categoryError) return categoryError;
 
   let current: MenuItem | null;
   try {
@@ -190,7 +235,7 @@ export async function updateItem(
     await safeRemoveImage(previousUrl);
   }
 
-  revalidatePath("/[lang]/admin/items", "page");
+  revalidateItemLists();
   return { ok: true };
 }
 
@@ -217,7 +262,7 @@ export async function toggleItemAvailability(
     };
   }
 
-  revalidatePath("/[lang]/admin/items", "page");
+  revalidateItemLists();
   return { ok: true };
 }
 
@@ -239,6 +284,9 @@ export async function deleteItem(
     console.error("deleteItem load failed:", error);
     return { ok: false, message: t("actions.itemLoadFailed") };
   }
+  if (!current) {
+    return { ok: false, message: t("actions.itemNotFound") };
+  }
 
   try {
     await deleteItemRecord(id);
@@ -248,8 +296,8 @@ export async function deleteItem(
   }
 
   // Remove the image only after the row is gone.
-  await safeRemoveImage(current?.image_url);
+  await safeRemoveImage(current.image_url);
 
-  revalidatePath("/[lang]/admin/items", "page");
+  revalidateItemLists();
   return { ok: true };
 }

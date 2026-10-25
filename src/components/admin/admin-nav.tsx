@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 import { isActivePath } from "@/lib/utils/nav";

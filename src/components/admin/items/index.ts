@@ -1,7 +1,5 @@
 export { ItemsView } from "./items-view";
 export type { ItemsViewProps } from "./items-view";
-export { ItemCategoryFilter } from "./item-category-filter";
-export type { ItemCategoryFilterProps } from "./item-category-filter";
 export { ItemForm } from "./item-form";
 export type { CategoryOption, ItemFormProps } from "./item-form";
 export { ItemFormDialog } from "./item-form-dialog";
@@ -12,3 +10,12 @@ export { DeleteItemDialog } from "./delete-item-dialog";
 export type { DeleteItemDialogProps } from "./delete-item-dialog";
 export { ToggleItemButton } from "./toggle-item-button";
 export type { ToggleItemButtonProps } from "./toggle-item-button";
+export { AdminItemsToolbar } from "./admin-items-toolbar";
+export type {
+  AdminItemsToolbarCategory,
+  AdminItemsToolbarProps,
+} from "./admin-items-toolbar";
+export { ItemsPagination } from "./items-pagination";
+export type { ItemsPaginationProps } from "./items-pagination";
+export { AdminItemsLoading } from "./items-loading";
+export type { AdminItemsLoadingProps } from "./items-loading";

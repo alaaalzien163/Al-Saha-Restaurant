@@ -44,6 +44,18 @@ const nextConfig: NextConfig = {
       ...(isDevelopment ? LOCAL_SUPABASE_STORAGE_PATTERNS : []),
     ],
   },
+  /**
+   * Menu images are uploaded through a Server Action (`multipart/form-data`).
+   * The framework default of 1 MB is smaller than the 4 MB validation limit in
+   * `src/lib/validations/image.ts`, which would reject a valid upload before it
+   * reached our own error message. 5 MB leaves room for multipart boundaries
+   * and part headers while the field-level check stays the authoritative cap.
+   */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "5mb",
+    },
+  },
   turbopack: {
     rules: {
       "*.css": {

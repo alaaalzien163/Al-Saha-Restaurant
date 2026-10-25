@@ -1,4 +1,9 @@
 import { resolveTranslator, type Translator } from "./translator";
+import {
+  asTrimmedText,
+  parseCheckboxBoolean,
+  parseNonNegativeInteger,
+} from "./fields";
 
 export type CategoryInput = {
   name: unknown;
@@ -28,14 +33,12 @@ export type CategoryValidation =
 const NAME_MAX = 120;
 const DESCRIPTION_MAX = 500;
 
-function parseBoolean(value: unknown): boolean {
-  return value === true || value === "true" || value === "on" || value === "1";
-}
-
 /**
- * Validates a category form. Trims all text and rejects a negative or
- * non-integer display order. This is UX validation — Supabase Auth + RLS
- * remain the authorization boundary.
+ * Validates a category form. Trims all text, requires a name and rejects a
+ * negative or non-integer display order.
+ *
+ * This is UX validation — Supabase Auth + RLS remain the authorization
+ * boundary; the server action additionally checks the admin session.
  */
 export function validateCategory(
   input: CategoryInput,
@@ -44,9 +47,8 @@ export function validateCategory(
   const translate = resolveTranslator(t);
   const fields: CategoryFieldErrors = {};
 
-  const name = typeof input.name === "string" ? input.name.trim() : "";
-  const description =
-    typeof input.description === "string" ? input.description.trim() : "";
+  const name = asTrimmedText(input.name);
+  const description = asTrimmedText(input.description);
 
   if (!name) {
     fields.name = translate("field.nameRequired");
@@ -60,26 +62,12 @@ export function validateCategory(
     });
   }
 
-  const rawOrder =
-    typeof input.display_order === "number"
-      ? String(input.display_order)
-      : typeof input.display_order === "string"
-        ? input.display_order.trim()
-        : "";
-
-  let displayOrder = 0;
-  if (rawOrder !== "") {
-    const parsed = Number(rawOrder);
-    if (!Number.isInteger(parsed)) {
-      fields.display_order = translate("field.displayOrderNotWhole");
-    } else if (parsed < 0) {
-      fields.display_order = translate("field.displayOrderNegative");
-    } else {
-      displayOrder = parsed;
-    }
+  const order = parseNonNegativeInteger(input.display_order, translate);
+  if (order.error) {
+    fields.display_order = order.error;
   }
 
-  if (fields.name || fields.description || fields.display_order) {
+  if (Object.keys(fields).length > 0) {
     return { ok: false, fields };
   }
 
@@ -88,8 +76,8 @@ export function validateCategory(
     value: {
       name,
       description: description ? description : null,
-      display_order: displayOrder,
-      is_active: parseBoolean(input.is_active),
+      display_order: order.value,
+      is_active: parseCheckboxBoolean(input.is_active),
     },
   };
 }

@@ -63,6 +63,30 @@ export async function getAdminCategories(): Promise<Category[]> {
   return data ?? [];
 }
 
+/**
+ * A single category with the minimum needed to verify it exists.
+ * Used by the item actions to reject an unknown category.
+ */
+export async function getAdminCategoryById(
+  id: string,
+): Promise<Pick<Category, "id" | "name"> | null> {
+  "use cache: private";
+  cacheLife({ stale: Infinity });
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("categories")
+    .select("id, name")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`Failed to load category: ${error.message}`);
+  }
+
+  return data;
+}
+
 export async function insertCategory(
   values: TableInsert<"categories">,
 ): Promise<void> {

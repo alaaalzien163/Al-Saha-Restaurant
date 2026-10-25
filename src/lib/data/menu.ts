@@ -1,25 +1,16 @@
 import { cache } from "react";
-import type { MenuSection, PublicMenuItem } from "@/types/domain";
+import type {
+  MenuSection,
+  PublicCategory,
+  PublicMenuItem,
+} from "@/types/domain";
 import { getActiveCategories } from "./categories";
 import { getAvailableItems } from "./items";
 
-/**
- * The public menu: active categories, each with their available items ordered
- * by `display_order`.
- *
- * - Categories and items are fetched in parallel (`Promise.all`) so there is no
- *   request waterfall.
- * - Both underlying reads are themselves `cache`d, so if any other server
- *   component needs categories or items this request, no extra queries run.
- * - Active categories are always returned, even with no available items, so the
- *   menu can show a per-category empty state instead of silently hiding them.
- */
-export const getMenu = cache(async (): Promise<MenuSection[]> => {
-  const [categories, items] = await Promise.all([
-    getActiveCategories(),
-    getAvailableItems(),
-  ]);
-
+function groupSections(
+  categories: PublicCategory[],
+  items: PublicMenuItem[],
+): MenuSection[] {
   const itemsByCategory = new Map<string, PublicMenuItem[]>();
   for (const item of items) {
     const bucket = itemsByCategory.get(item.category_id);
@@ -34,4 +25,21 @@ export const getMenu = cache(async (): Promise<MenuSection[]> => {
     category,
     items: itemsByCategory.get(category.id) ?? [],
   }));
+}
+
+/**
+ * The public menu: active categories, each with their available items ordered
+ * by `display_order`.
+ *
+ * - Active categories are always returned, even with no available items, so the
+ *   menu can show a per-category empty state instead of hiding them.
+ * - Cached per request so the homepage preview and menu page share one read.
+ */
+export const getMenu = cache(async (): Promise<MenuSection[]> => {
+  const [categories, items] = await Promise.all([
+    getActiveCategories(),
+    getAvailableItems(),
+  ]);
+
+  return groupSections(categories, items);
 });

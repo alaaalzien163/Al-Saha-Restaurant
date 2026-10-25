@@ -72,7 +72,7 @@ export async function ItemsView({ items, categories }: ItemsViewProps) {
   const unavailableLabel = t("status.unavailable");
   const uncategorised = t("items.uncategorised");
   const unavailablePriceLabel = tCommon("priceUnavailable");
-  const nameById = new Map(categories.map((c) => [c.id, c.name]));
+  const categoryById = new Map(categories.map((c) => [c.id, c]));
 
   return (
     <>
@@ -119,7 +119,7 @@ export async function ItemsView({ items, categories }: ItemsViewProps) {
                   </div>
                 </th>
                 <td className="px-4 py-3 text-muted-foreground">
-                  {nameById.get(item.category_id) ?? (
+                  {categoryById.get(item.category_id)?.name ?? (
                     <span aria-hidden="true">&mdash;</span>
                   )}
                 </td>
@@ -165,7 +165,8 @@ export async function ItemsView({ items, categories }: ItemsViewProps) {
                 <p className="mt-0.5 text-xs text-muted-foreground">
                   {t("items.mobileMeta", {
                     category:
-                      nameById.get(item.category_id) ?? uncategorised,
+                      categoryById.get(item.category_id)?.name ??
+                      uncategorised,
                     order: item.display_order,
                   })}
                 </p>

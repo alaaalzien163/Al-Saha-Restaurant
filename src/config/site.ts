@@ -4,7 +4,7 @@
  */
 export const siteConfig = {
   name: "Al-Saha Restaurant",
-  shortName: "Al-Saha Restaurant", 
+  shortName: "Al-Saha Restaurant",
   monogram: "AS",
   description:
     " Al-Saha Restaurant — browse our freshly prepared dishes and visit us in-store . ",
@@ -25,7 +25,7 @@ export const siteConfig = {
     eyebrow: "Our story",
     title: "A neighbourhood kitchen rooted in tradition",
     paragraphs: [
-      "Al-Saha Resto started with a simple idea: cook the food we grew up with and serve it the way it should be — fresh, generous and full of flavour.",
+      "Al-Saha Restaurant started with a simple idea: cook the food we grew up with and serve it the way it should be — fresh, generous and full of flavour.",
       "Every plate is prepared in-house each day, from slow-simmered sauces to bread baked on the premises. No shortcuts, just honest cooking shared around the table.",
     ],
     values: [
@@ -43,7 +43,7 @@ export const siteConfig = {
       },
     ],
     imageAlt:
-      "Warmly lit dining room at Al-Saha Resto glowing with ambient light",
+      "Warmly lit dining room at Al-Saha Restaurant glowing with ambient light",
   },
   menu: {
     eyebrow: "Our menu",

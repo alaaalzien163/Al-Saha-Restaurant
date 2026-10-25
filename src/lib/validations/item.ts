@@ -23,7 +23,8 @@ export type ItemValues = {
   name: string;
   description: string | null;
   category_id: string;
-  price: number;
+  /** `null` keeps the item's price marked as unavailable in the database. */
+  price: number | null;
   display_order: number;
   is_available: boolean;
 };
@@ -68,8 +69,9 @@ function parseNonNegativeInteger(
 }
 
 /**
- * Validates an item form. Trims text, requires a name and category, and
- * requires a numeric, non-negative price.
+ * Validates an item form. Trims text, requires a name, category and display
+ * order, and accepts an optional non-negative price. An empty price stays
+ * `null` so items without a published price are never given an invented one.
  */
 export function validateItem(
   input: ItemInput,
@@ -107,10 +109,8 @@ export function validateItem(
         ? input.price.trim()
         : "";
 
-  let price = 0;
-  if (priceRaw === "") {
-    fields.price = translate("item.priceRequired");
-  } else {
+  let price: number | null = null;
+  if (priceRaw !== "") {
     const parsed = Number(priceRaw);
     if (!Number.isFinite(parsed)) {
       fields.price = translate("item.priceNotNumber");

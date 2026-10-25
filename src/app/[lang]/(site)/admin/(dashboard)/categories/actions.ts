@@ -15,7 +15,6 @@ import {
   updateCategoryRecord,
 } from "@/lib/data/categories";
 
-
 function readId(formData: FormData): string {
   const id = formData.get("id");
   return typeof id === "string" ? id.trim() : "";
@@ -56,6 +55,7 @@ export async function createCategory(
   }
 
   revalidatePath("/[lang]/admin/categories", "page");
+  revalidatePath("/[lang]/admin/items", "page");
   return { ok: true };
 }
 
@@ -87,6 +87,7 @@ export async function updateCategory(
   }
 
   revalidatePath("/[lang]/admin/categories", "page");
+  revalidatePath("/[lang]/admin/items", "page");
   return { ok: true };
 }
 
@@ -133,5 +134,6 @@ export async function deleteCategory(
   }
 
   revalidatePath("/[lang]/admin/categories", "page");
+  revalidatePath("/[lang]/admin/items", "page");
   return { ok: true };
 }

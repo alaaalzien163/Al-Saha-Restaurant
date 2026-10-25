@@ -85,14 +85,27 @@
     "errorDescription": "حدث خطأ أثناء جلب أطباقنا. يُرجى المحاولة مجددًا بعد لحظات.",
     "retry": "أعد المحاولة",
     "metaTitle": "القائمة",
-    "metaDescription": "تصفّح قائمة مطعم الساحة كاملة — أطباق طازجة تُعدّ يوميًا ومرتّبة حسب الأقسام."
+    "metaDescription": "تصفّح قائمة مطعم الساحة كاملة — أطباق طازجة تُعدّ يوميًا ومرتّبة حسب الأقسام.",
+    "searchLabel": "البحث في القائمة",
+    "searchPlaceholder": "ابحث عن طبق",
+    "clearSearch": "مسح البحث",
+    "allCategories": "الكل",
+    "sortLabel": "ترتيب الأطباق",
+    "sortDefault": "الترتيب الافتراضي",
+    "sortPriceAsc": "السعر: من الأقل إلى الأعلى",
+    "sortPriceDesc": "السعر: من الأعلى إلى الأقل",
+    "resultsCount": "{count, plural, =0 {لا توجد أطباق} one {طبق واحد} two {طبقان} few {# أطباق} many {# طبقًا} other {# طبق}}",
+    "resultsFiltered": "{shown} من {total} طبق",
+    "noResultsTitle": "لا توجد أطباق مطابقة",
+    "noResultsDescription": "جرّب كلمة أخرى، أو اختر قسمًا آخر.",
+    "clearFilters": "مسح البحث"
   },
   "Contact": {
     "eyebrow": "تواصل",
     "title": "تواصل معنا",
     "description": "زُرنا أو اتصل مسبقًا أو أرسل لنا رسالة — يسعدنا أن نسمع منك.",
     "metaTitle": "تواصل معنا",
-    "metaDescription": "تواصل مع مطعم Al-Saha Resto — العنوان ورقم الهاتف وساعات العمل والاتجاهات.",
+    "metaDescription": "تواصل مع مطعم الساحة — العنوان ورقم الهاتف وساعات العمل والاتجاهات.",
     "fallbackTitle": "بيانات التواصل قريبًا",
     "fallbackDescription": "نُحدّث بيانات التواصل حاليًا. في هذه الأثناء، تصفّح قائمتنا.",
     "viewMenu": "تصفّح القائمة",
@@ -156,6 +169,7 @@
       "actions": "الإجراءات",
       "item": "الصنف",
       "category": "التصنيف",
+      "updated": "آخر تحديث",
       "price": "السعر",
       "message": "الرسالة",
       "schedule": "الجدولة"
@@ -252,6 +266,7 @@
         "category": "التصنيف",
         "categoryPlaceholder": "اختر تصنيفًا",
         "price": "السعر",
+        "priceHint": "اتركه فارغًا إذا كان السعر غير متوفر.",
         "order": "الترتيب الظاهر",
         "orderHint": "الأصغر أولًا.",
         "description": "الوصف",
@@ -283,8 +298,31 @@
         "unavailableToast": "تم تحديد الصنف كغير متاح"
       },
       "filter": {
-        "label": "التصفية حسب التصنيف",
-        "all": "الكل"
+        "categoryLabel": "التصنيف",
+        "allCategories": "كل التصنيفات",
+        "availabilityLabel": "التوفر",
+        "availabilityAll": "الكل",
+        "availabilityAvailable": "متاح",
+        "availabilityUnavailable": "غير متاح",
+        "sortLabel": "الترتيب",
+        "sortOrder": "الترتيب الافتراضي",
+        "sortName": "الاسم (أ–ي)",
+        "sortPriceAsc": "السعر: من الأقل إلى الأعلى",
+        "sortPriceDesc": "السعر: من الأعلى إلى الأقل",
+        "clear": "مسح عوامل التصفية"
+      },
+      "searchLabel": "البحث في الأصناف",
+      "searchPlaceholder": "ابحث بالاسم أو الوصف",
+      "clearSearch": "مسح البحث",
+      "matchCount": "{count, plural, =0 {لا توجد أصناف مطابقة} one {صنف واحد مطابق} two {صنفان مطابقان} few {# أصناف مطابقة} many {# صنفًا مطابقًا} other {# صنف مطابق}}",
+      "clearFilters": "مسح البحث وعوامل التصفية",
+      "emptySearchTitle": "لا توجد أصناف مطابقة",
+      "emptySearchDescription": "جرّب كلمة بحث أخرى، أو امسح عوامل التصفية.",
+      "pagination": {
+        "label": "ترقيم الصفحات",
+        "previous": "السابق",
+        "next": "التالي",
+        "page": "الصفحة {page} من {pages}"
       }
     },
     "announcements": {
@@ -369,7 +407,7 @@
     },
     "item": {
       "categoryRequired": "يرجى اختيار فئة.",
-      "priceRequired": "السعر مطلوب.",
+      "categoryNotFound": "لم يعد هذا التصنيف موجودًا.",
       "priceNotNumber": "يجب أن يكون السعر رقمًا.",
       "priceNegative": "لا يمكن أن يكون السعر سالبًا."
     },
@@ -395,7 +433,7 @@
     "image": {
       "typeInvalid": "اختر صورة بصيغة JPEG أو PNG أو WebP أو AVIF أو GIF.",
       "empty": "الصورة المحددة فارغة.",
-      "tooLarge": "يجب ألا تتجاوز حجم الصورة 5 ميغابايت."
+      "tooLarge": "يجب ألا يتجاوز حجم الصورة 4 ميغابايت."
     },
     "announcement": {
       "messageRequired": "أدخل نص الإعلان.",

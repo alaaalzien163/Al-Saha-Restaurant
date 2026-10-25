@@ -262,9 +262,14 @@ export async function Contact({
 
           {socials && socials.length > 0 ? (
             <div>
-              <h3 className="text-sm font-medium text-muted-foreground">
+              {/*
+                A label for the social list, not a document section: keeping it
+                out of the heading outline avoids an h3-before-h2 skip on the
+                contact page, where the page h1 is the only heading above it.
+              */}
+              <p className="text-sm font-medium text-muted-foreground">
                 {t("followUs")}
-              </h3>
+              </p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {socials.map((social) => (
                   <li key={social.href}>

@@ -1,7 +1,14 @@
 import { resolveTranslator, type Translator } from "./translator";
 
-/** Maximum upload size for menu images (5 MB). */
-export const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+/**
+ * Maximum upload size for menu images (4 MB).
+ *
+ * Kept below Vercel's 4.5 MB request-body limit for Serverless Functions: a
+ * request that large is rejected by the platform before Next.js can return a
+ * useful validation error. Must stay in sync with `serverActions.bodySizeLimit`
+ * in `next.config.ts`, which adds headroom for multipart overhead.
+ */
+export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
 export const ALLOWED_IMAGE_TYPES = [
   "image/jpeg",

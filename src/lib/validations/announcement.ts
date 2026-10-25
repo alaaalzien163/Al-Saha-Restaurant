@@ -1,4 +1,5 @@
 import { resolveTranslator, type Translator } from "./translator";
+import { isSafeHttpOrPathUrl } from "./url";
 
 export type AnnouncementInput = {
   message_ar: unknown;
@@ -82,23 +83,11 @@ function parseNonNegativeInteger(
 /**
  * Whether a destination is safe to render as a link.
  *
- * Only two shapes are allowed: an in-app absolute path (`/menu`, `/#contact`)
- * and an `https://` URL. Protocol-relative (`//evil.example`), backslash
- * variants (`/\evil.example` — browsers treat `\` as `/`), and every other
- * scheme (`javascript:`, `data:`, plain `http:`) are rejected, so a stored
- * value can never become a script or cross-origin redirect.
+ * Delegates to the shared link/image URL policy so announcements and contact
+ * links all accept exactly the same shapes.
  */
 export function isSafeAnnouncementUrl(url: string): boolean {
-  if (/[\\\r\n]/.test(url)) return false;
-  if (url.startsWith("/")) return !url.startsWith("//");
-  if (url.startsWith("https://")) {
-    try {
-      return new URL(url).protocol === "https:";
-    } catch {
-      return false;
-    }
-  }
-  return false;
+  return isSafeHttpOrPathUrl(url);
 }
 
 /**

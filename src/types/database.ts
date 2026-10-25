@@ -66,7 +66,7 @@ export type Database = {
           category_id: string;
           name: string;
           description: string | null;
-          price: number;
+          price: number | null;
           image_url: string | null;
           display_order: number;
           is_available: boolean;
@@ -78,7 +78,7 @@ export type Database = {
           category_id: string;
           name: string;
           description?: string | null;
-          price: number;
+          price?: number | null;
           image_url?: string | null;
           display_order?: number;
           is_available?: boolean;
@@ -90,7 +90,7 @@ export type Database = {
           category_id?: string;
           name?: string;
           description?: string | null;
-          price?: number;
+          price?: number | null;
           image_url?: string | null;
           display_order?: number;
           is_available?: boolean;

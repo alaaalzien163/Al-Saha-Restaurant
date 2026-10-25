@@ -10,18 +10,26 @@ export { getActiveCategories } from "./categories";
 export {
   deleteCategoryRecord,
   getAdminCategories,
+  getAdminCategoryById,
   insertCategory,
   setCategoryActive,
   updateCategoryRecord,
 } from "./categories";
 export { getAvailableItems } from "./items";
 export {
+  ADMIN_ITEMS_PAGE_SIZE,
   deleteItemRecord,
   getAdminItemById,
-  getAdminItems,
+  getAdminItemsPage,
   insertItem,
   setItemAvailability,
   updateItemRecord,
+} from "./items";
+export type {
+  AdminItemsAvailability,
+  AdminItemsPageQuery,
+  AdminItemsPageResult,
+  AdminItemsSort,
 } from "./items";
 export { getMenu } from "./menu";
 export { getProfile, saveProfile } from "./profiles";

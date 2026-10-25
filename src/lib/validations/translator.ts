@@ -18,7 +18,7 @@ const EN_MESSAGES: Record<string, string> = {
   "announcement.dateInvalid": "Enter a valid date and time.",
   "announcement.endBeforeStart": "The end time must be after the start time.",
   "item.categoryRequired": "Please choose a category.",
-  "item.priceRequired": "Price is required.",
+  "item.categoryNotFound": "That category no longer exists.",
   "item.priceNotNumber": "Price must be a number.",
   "item.priceNegative": "Price cannot be negative.",
   "auth.emailRequired": "Email is required.",

@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 import { Brand } from "@/components/layout/brand";
 import { AdminNav } from "./admin-nav";

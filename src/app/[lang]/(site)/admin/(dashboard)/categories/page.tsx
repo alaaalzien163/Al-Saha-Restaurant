@@ -44,21 +44,24 @@ export default async function AdminCategoriesPage({
   const t = await getTranslations({ locale: lang, namespace: "Admin" });
 
   await requireAdmin();
+
   const categories = await getAdminCategories();
+
+  const addButton = <AddCategoryButton label={t("categories.add")} />;
 
   return (
     <>
       <AdminPageHeader
         title={t("categories.title")}
         description={t("categories.description")}
-        action={<AddCategoryButton label={t("categories.add")} />}
+        action={addButton}
       />
 
       {categories.length === 0 ? (
         <EmptyState
           title={t("categories.emptyTitle")}
           description={t("categories.emptyDescription")}
-          action={<AddCategoryButton label={t("categories.add")} />}
+          action={addButton}
         />
       ) : (
         <CategoriesView categories={categories} />

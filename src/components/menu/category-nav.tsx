@@ -2,13 +2,21 @@
 
 import type { KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
-import type { PublicCategory } from "@/types/domain";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils/cn";
 
+/** Synthetic tab that shows every category on the menu. */
+export const ALL_CATEGORIES_ID = "all-categories";
+
+export type CategoryTab = {
+  id: string;
+  name: string;
+};
+
 export type CategoryNavProps = {
-  categories: PublicCategory[];
-  /** Currently selected category — driven by the parent so one panel shows. */
+  /** Tabs to render; the caller prepends an "all categories" tab. */
+  categories: CategoryTab[];
+  /** Currently selected tab id — driven by the parent so one panel shows. */
   activeId: string;
   onSelect: (categoryId: string) => void;
 };
@@ -28,7 +36,7 @@ const SELECTABLE_KEYS = ["ArrowLeft", "ArrowRight", "Home", "End"];
 /**
  * Sticky category selector rendered as a WAI-ARIA tab list.
  *
- * Only one category is ever active; the parent owns the selection so switching
+ * Only one tab is ever active; the parent owns the selection so switching
  * categories is a local state change with no request. A roving tabindex keeps a
  * single tab in the page tab order, with arrow keys (RTL-aware), Home and End
  * moving between tabs. The row scrolls horizontally so the page never
