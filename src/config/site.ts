@@ -157,10 +157,7 @@ export type SiteContact = {
  * the UI when unset, so this stays the only place to edit.
  */
 export const siteContact: SiteContact = {
-  phoneNumbers: [
-    { number: "0987804058", display: "0987804058" },
-    { number: "0937776213", display: "0937776213" },
-  ],
+  phoneNumbers: [{ number: "0987804058", display: "0987804058" }],
   /* Primary contact channel. Digits only incl. country code (Syria: +963). */
   whatsapp: {
     number: "963987804058",
